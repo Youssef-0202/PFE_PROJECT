@@ -1,0 +1,182 @@
+Medecin_ACTOR_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(commun)_MENU(Gestion de medecin):
+  id: Long ID
+  ref: String REF_REQ
+  email: String LABEL_REQ
+  nom: String
+  prenom: String
+  dateNaissance: LocalDateTime
+  telephone: String
+  photoProfil: String
+  speciality: String
+  sexe: Sexe
+
+Infermier_ACTOR_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(commun)_MENU(Gestion infermier):
+  id: Long ID
+  ref: String REF_REQ
+  email: String LABEL_REQ
+  nom: String
+  prenom: String
+  dateNaissance: LocalDateTime
+  telephone: String
+  photoProfil: String
+  sexe: Sexe
+
+Sexe_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(commun)_MENU(Commun):
+  id: Long ID
+  ref: String REF_REQ
+  libelle: String
+
+Patient_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(patient)_MENU(Patient):
+  id: Long ID
+  numDossier: String REF_REQ
+  nom: String
+  prenom: String
+  dateNaissance: LocalDateTime
+  photoProfil: String
+  sexe: Sexe
+  patientContact: PatientContact List
+
+PatientContact_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(patient)_MENU(Patient):
+  id: Long ID
+  cin: String REF_REQ
+  email: String LABEL_REQ
+  nom: String
+  prenom: String
+  telephone: String
+  adresse: String
+  relation: Relation
+  patient: Patient
+
+Relation_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(patient)_MENU(Patient):
+  id: Long ID
+  ref: String REF_REQ
+  libelle: String
+
+AnalyseMedicale_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  dateAnalyseMedicale: LocalDateTime
+  valeur: BigDecimal
+  valeurRang: String
+  epreuve: Epreuve
+  consultation: Consultation
+
+Antecedent_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  allergie: String
+  etat_psy: String
+  respiratoire: String
+  alimentation: String
+  mouvement: String
+  sommeil: String
+  groupeSanguin: GroupeSanguin
+
+Epreuve_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  libelle: String
+
+FichePatient_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  dateFichePatient: LocalDateTime
+  antecedentFamillial: String
+  histoireMaladie: String
+  examenFichePatient: String
+  conclusionFichePatient: String
+  antecedent: Antecedent
+  consultation: Consultation
+
+GroupeSanguin_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(commun):
+  id: Long ID
+  ref: String REF_REQ
+  libelle: String
+
+Radiologie_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  dateRadiologie: LocalDateTime
+  commentaire: String
+  imageScann: String
+  consultation: Consultation
+  typeImage: TypeImage
+
+TypeImage_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(dossier_medical)_MENU(commun):
+  id: Long ID
+  ref: String REF_REQ
+  libelle: String
+
+Certificat_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(gestion_medicale)_MENU(Gestion medicale):
+  id: Long ID
+  ref: String REF_REQ
+  dateDebut: LocalDateTime
+  dateFin: LocalDateTime
+  description: String
+  nbrJour: Integer
+  consultatuin: Consultation
+
+Medicament_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(gestion_medicale)_MENU(Gestion medicale):
+  id: Long ID
+  ref: String REF_REQ
+  sointProduit: String
+  Duree: String
+  consigne: String
+  traitement: Traitement
+
+Ordonnance_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(gestion_medicale)_MENU(Gestion medicale):
+  id: Long ID
+  ref: String REF_REQ
+  nomHospital: String
+  dateOrdonnance: LocalDateTime
+  adresseHospitla: String
+  signature: String
+  traitement: Traitement
+  consultatuin: Consultation
+
+Traitement_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(gestion_medicale)_MENU(Gestion medicale):
+  id: Long ID
+  ref: String REF_REQ
+  imageOrdonnance: String
+  ordonnance: Ordonnance
+  consultatuin: Consultation
+  medicaments: Medicament List
+
+Consultation_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(consultation_medicale)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  dateConsultation: LocalDateTime
+  heureConsultation: LocalDateTime
+  typeConsultation: String
+  medecin: Medecin
+  infermier: Infermier
+  patient: Patient
+  analyseMedicale: AnalyseMedicale List
+  fichePatient: FichePatient List
+  radiologie: Radiologie List
+  diagnostic: Diagnostic List
+  syntheseMedicale: SyntheseMedicale List
+
+Diagnostic_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(rapport_medicaux)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  dateDiagnostic: LocalDateTime
+  description: String
+  consultation: Consultation
+
+SyntheseMedicale_MS(ms1)_ROLES(admin,medecin,infermier)_SUB-MODULE(rapport_medicaux)_MENU(Gestion des consultations):
+  id: Long ID
+  ref: String REF_REQ
+  dateSyntheseMedicale: LocalDateTime
+  description: String
+  consultation: Consultation
+
+$CONFIG:
+  ms1-back: "{tech=spring, template=default-junior ,enable=true, domain=ma, groupId=zs, projectName=gestion_service_pediatrie, port=8036, msName=pediatrie-service}"
+  ms1-front: "{tech=angular, template=default-junior ,enable=true, port=4300}"
+  ms1-db: "{name=pediatrie, type=mysql}"
+  ms1-cloud-native: "{tracing=false, faultTolerance=false, discovery=false}"
+
+  repository-info: "{name=pinky, type=github, username=younes-uca, token=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}"
+  gateway: "{tech=spring, template=gateway, port=8090, enable=false}"
+  discovery: "{tech=spring, template=consul-win, port=8091, enable=false}"
