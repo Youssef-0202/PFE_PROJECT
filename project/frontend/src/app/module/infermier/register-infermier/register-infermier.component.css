@@ -4,7 +4,6 @@
     margin: 0 auto;
     position: relative;
     height: 100vh;
-    background: url("src/assets/layout/images/login-bg.jpg") no-repeat;
     background-size: cover;
 }
 .login-body .login-panel {
