@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Message} from 'primeng/api';
 import {AuthService} from 'src/app/zynerator/security/shared/service/Auth.service';
 import {LayoutService} from 'src/app/layout/service/app.layout.service';
+import {AppLayoutComponent} from "../../../layout/app.layout.component";
 
 
 @Component({

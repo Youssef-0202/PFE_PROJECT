@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.ArrayList;
 
@@ -38,6 +40,8 @@ import ma.zs.gestion_service_pediatrie.zynerator.dto.FileTempDto;
 @RestController
 @RequestMapping("/api/admin/infermier/")
 public class InfermierRestAdmin {
+
+
 
 
 
@@ -98,6 +102,24 @@ public class InfermierRestAdmin {
     @PostMapping("")
     public ResponseEntity<InfermierDto> save(@RequestBody InfermierDto dto) throws Exception {
         if(dto!=null){
+            converter.init(true);
+            Infermier myT = converter.toItem(dto);
+            Infermier t = service.create(myT);
+            if (t == null) {
+                return new ResponseEntity<>(null, HttpStatus.IM_USED);
+            }else{
+                InfermierDto myDto = converter.toDto(t);
+                return new ResponseEntity<>(myDto, HttpStatus.CREATED);
+            }
+        }else {
+            return new ResponseEntity<>(dto, HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PostMapping("save")
+    public ResponseEntity<InfermierDto> createInfer(@RequestBody InfermierDto dto,@RequestParam("file") MultipartFile file) throws IOException {
+        if(dto!=null){
+            dto.setPhotoProfil(file.getBytes());
             converter.init(true);
             Infermier myT = converter.toItem(dto);
             Infermier t = service.create(myT);

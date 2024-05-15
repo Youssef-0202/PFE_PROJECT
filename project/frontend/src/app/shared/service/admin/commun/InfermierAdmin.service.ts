@@ -48,6 +48,9 @@ export class InfermierAdminService {
         this.API_PERMISSION = environment.apiUrl + 'modelPermissionUser/';
     }
 
+    public findById(id:number){
+        return this.http.get<InfermierDto> (this.API+'id/'+id)
+    }
 
     public findAll() {
         return this.http.get<Array<InfermierDto>>(this.API);

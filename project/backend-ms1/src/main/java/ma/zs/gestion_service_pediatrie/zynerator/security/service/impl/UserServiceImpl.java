@@ -32,6 +32,7 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserCriteria, Use
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
     public User create(User t) {
+        System.out.println(t.getUsername());
         User foundedUserByUsername = findByUsername(t.getUsername());
         User foundedUserByEmail = dao.findByEmail(t.getEmail());
         if (foundedUserByUsername != null || foundedUserByEmail != null) return null;
@@ -68,6 +69,8 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserCriteria, Use
             return t;
         }
     }
+
+
 
     public User findWithAssociatedLists(Long id){
         User result = dao.findById(id).orElse(null);
@@ -122,6 +125,8 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserCriteria, Use
     @Override
     public boolean changePassword(String username, String newPassword) {
         User user = dao.findByUsername(username);
+        System.out.println("userName: "+username);
+        System.out.println("Password: "+newPassword);
         if (user != null) {
             user.setPassword(cryptPassword(newPassword));
             user.setPasswordChanged(true);
@@ -136,6 +141,7 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserCriteria, Use
             return null;
         return dao.findByUsername(username);
     }
+
     @Override
     @Transactional
     public int deleteByUsername(String username) {
@@ -162,6 +168,10 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserCriteria, Use
     private ModelPermissionUserService modelPermissionUserService ;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private UserService userService;
+
+
 
     @Lazy
     @Autowired

@@ -23,7 +23,7 @@ public class InfermierDto  extends AuditBaseDto {
     private String prenom  ;
     private String dateNaissance ;
     private String telephone  ;
-    private String photoProfil  ;
+    private byte[] photoProfil  ;
     private Boolean credentialsNonExpired  ;
     private Boolean enabled  ;
     private Boolean accountNonExpired  ;
@@ -93,10 +93,10 @@ public class InfermierDto  extends AuditBaseDto {
     }
 
     @Log
-    public String getPhotoProfil(){
+    public byte[] getPhotoProfil(){
         return this.photoProfil;
     }
-    public void setPhotoProfil(String photoProfil){
+    public void setPhotoProfil(byte[] photoProfil){
         this.photoProfil = photoProfil;
     }
 

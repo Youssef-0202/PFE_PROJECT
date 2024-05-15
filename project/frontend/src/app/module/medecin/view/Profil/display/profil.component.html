@@ -18,15 +18,14 @@
 
             <!-- Main -->
             <div class="main">
-
                 <div class="sidenav">
                     <div class="profile">
                         <img src="./assets/layout/images/téléchargement.jpeg" alt="" width="100" height="100">
                         <div class="name">
-                            {{authenticatedUser.lastName}} {{authenticatedUser.firstName}}
+                            {{authenticatedMedecin.nom}} {{authenticatedMedecin.prenom}}
                         </div>
                         <div class="job">
-                            Admin
+                            Medecin
                         </div>
                     </div>
 
@@ -39,32 +38,37 @@
                             <tr>
                                 <td>User name</td>
                                 <td>:</td>
-                                <td>{{authenticatedUser.username}}</td>
+                                <td>{{authenticatedMedecin.username}}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>:</td>
-                                <td>{{ authenticatedUser.email }}</td>
+                                <td>{{ authenticatedMedecin.email }}</td>
                             </tr>
                             <tr>
-                                <td>Phone</td>
+                                <td>Date de Naissance</td>
                                 <td>:</td>
-                                <td>{{authenticatedUser.phone}}</td>
+                                <td>{{authenticatedMedecin.dateNaissance}}</td>
                             </tr>
                             <tr>
-                                <td>Date of creation  </td>
+                                <td>Speciality</td>
                                 <td>:</td>
-                                <td>{{authenticatedUser.createdAt}}</td>
+                                <td>{{authenticatedMedecin.speciality}}</td>
+                            </tr>
+                            <tr>
+                                <td>Sexe </td>
+                                <td>:</td>
+                                <td>Homme !</td>
                             </tr>
                             <tr>
                                 <td>Compte Blocked </td>
                                 <td>:</td>
-                                <td>{{authenticatedUser.accountNonLocked ? "Non Blocked ":"Blocked"}}</td>
+                                <td>{{authenticatedMedecin.accountNonLocked ? "Non Blocked ":"Blocked"}}</td>
                             </tr>
                             <tr>
                                 <td>Password Changed </td>
                                 <td>:</td>
-                                <td>{{authenticatedUser.passwordChanged ? "Oui ":"non"}}</td>
+                                <td>{{authenticatedMedecin.passwordChanged ? "Oui ":"non"}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -84,22 +88,22 @@
                 <div class="grid">
 
                     <div class="field col-12 md:col-6">
-                        <label for="4">{{'user.username' | translate}}</label>
+                        <label for="4">{{'User Name' | translate}}</label>
                         <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.username' | translate}}" id="4" [(ngModel)]="authenticatedUser.username"
+                               placeholder="{{'username' | translate}}" id="4" [(ngModel)]="authenticatedMedecin.username"
                         />
                     </div>
                     <div class="field col-12 md:col-6">
                         <label for="5">{{'First Name' | translate}}</label>
                         <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.firstNAme' | translate}}" id="5" [(ngModel)]="authenticatedUser.firstName"
+                               placeholder="{{'firstNAme' | translate}}" id="5" [(ngModel)]="authenticatedMedecin.prenom"
                         />
 
                     </div>
                     <div class="field col-12 md:col-6">
                         <label for="6">{{'Last Name' | translate}}</label>
                         <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.lastName' | translate}}" id="6" [(ngModel)]="authenticatedUser.lastName"
+                               placeholder="{{'lastName' | translate}}" id="6" [(ngModel)]="authenticatedMedecin.nom"
                         />
 
                     </div>
@@ -107,19 +111,16 @@
                     <div class="field col-12 md:col-6">
                         <label for="2">{{'Email' | translate}}</label>
                         <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.email' | translate}}" id="2" [(ngModel)]="authenticatedUser.email"
+                               placeholder="{{'user.email' | translate}}" id="2" [(ngModel)]="authenticatedMedecin.email"
                         />
-
                     </div>
 
                     <div class="field col-12 md:col-6">
-                        <label for="1">{{'Phone' | translate}}</label>
+                        <label for="1">{{'Sexe' | translate}}</label>
                         <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.phone' | translate}}" id="1" [(ngModel)]="authenticatedUser.phone"
+                               placeholder="{{'sexe' | translate}}" id="1" value="Homme"
                         />
-
                     </div>
-
                 </div>
             </p-tabPanel>
             <p-tabPanel header="{{'user.password' | translate}}">
@@ -128,7 +129,7 @@
                     <div class="field col-12 md:col-6">
                         <label for="7">{{'Enter Your Password' | translate}}</label>
                         <input class="mb-2 mr-2" type="text"  pInputText
-                                id="7" [(ngModel)]="newPassword"
+                               id="7" [(ngModel)]="newPassword"
                         />
                         <small class='p-error' *ngIf='passwordNotMatch'>
                             mote de passe incorrect
@@ -138,7 +139,7 @@
                     <div class="field col-12 md:col-6">
                         <label for="7">{{'confirm your password' | translate}}</label>
                         <input class="mb-2 mr-2" type="text" pPassword
-                              id="8" [(ngModel)]="confermedPassword"
+                               id="8" [(ngModel)]="confermedPassword"
                         />
                         <small class='p-error' *ngIf='validatePasswordNotExist'>la confermation est obligatoire.</small>
 

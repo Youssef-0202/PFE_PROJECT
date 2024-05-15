@@ -42,6 +42,8 @@ import { GestioInfermierRoutingModule } from './view/gestio/gestio-infermier-rou
 
 import {SecurityModule} from 'src/app/module/security/security.module';
 import {SecurityRoutingModule} from 'src/app/module/security/security-routing.module';
+import {ProfilInfermierModule} from "./view/Profil/profil-infermier.module";
+import {ProfilInfermierRoutingModule} from "./view/Profil/profil-infermier-routing.module";
 
 
 @NgModule({
@@ -87,7 +89,8 @@ import {SecurityRoutingModule} from 'src/app/module/security/security-routing.mo
   GestioInfermierModule,
   GestioInfermierRoutingModule,
   SecurityModule,
-  SecurityRoutingModule
+  SecurityRoutingModule,
+      ProfilInfermierRoutingModule
   ],
   exports: [
 
@@ -98,7 +101,8 @@ import {SecurityRoutingModule} from 'src/app/module/security/security-routing.mo
     ConsultatioInfermierModule,
     CommunInfermierModule,
     GestioInfermierModule,
-  SecurityModule
+  SecurityModule,
+      ProfilInfermierModule
   ],
 
 })

@@ -250,7 +250,7 @@ public class MedecinAdminServiceImpl implements MedecinAdminService {
     @Override
     public Medecin create(Medecin t) {
         if (findByUsername(t.getUsername()) != null || t.getPassword() == null) return null;
-        System.out.println("method medecin executed");
+
                t.setPassword(userService.cryptPassword(t.getPassword()));
                t.setUsername(t.getUsername());
                t.setEnabled(true);
@@ -260,6 +260,7 @@ public class MedecinAdminServiceImpl implements MedecinAdminService {
                t.setPasswordChanged(false);
                t.setCreatedAt(LocalDateTime.now());
                t.setEmail(t.getEmail());
+
                Role role = roleService.findByAuthority(AuthoritiesConstants.MEDECIN);
                RoleUser roleUser = new RoleUser();
                roleUser.setRole(role);

@@ -69,7 +69,12 @@ import {AuthGuard} from 'src/app/zynerator/security/guards/auth.guard';
                             path: 'security',
                             loadChildren: () => import('../security/security-routing.module').then(x => x.SecurityRoutingModule),
                             canActivate: [AuthGuard],
-                        }
+                        },
+                        {
+                            path: 'profil',
+                            loadChildren: () => import('./view/Profil/profil-infermier-routing.module').then(x => x.ProfilInfermierRoutingModule),
+                            canActivate: [AuthGuard],
+                        },
                     ]
                 },
             ]

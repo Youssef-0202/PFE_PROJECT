@@ -44,6 +44,8 @@ import { GestioMedecinRoutingModule } from './view/gestio/gestio-medecin-routing
 
 import {SecurityModule} from 'src/app/module/security/security.module';
 import {SecurityRoutingModule} from 'src/app/module/security/security-routing.module';
+import {ProfilMedecinRoutingModule} from "./view/Profil/profil-medecin-routing.module";
+import {ProfilMedecinModule} from "./view/Profil/profil-medecin.module";
 
 
 @NgModule({
@@ -90,7 +92,8 @@ import {SecurityRoutingModule} from 'src/app/module/security/security-routing.mo
   GestioMedecinModule,
   GestioMedecinRoutingModule,
   SecurityModule,
-  SecurityRoutingModule
+  SecurityRoutingModule,
+      ProfilMedecinRoutingModule
   ],
   exports: [
   LoginMedecinComponent,
@@ -102,7 +105,8 @@ import {SecurityRoutingModule} from 'src/app/module/security/security-routing.mo
     ConsultatioMedecinModule,
     CommunMedecinModule,
     GestioMedecinModule,
-  SecurityModule
+  SecurityModule,
+      ProfilMedecinModule
   ],
 
 })

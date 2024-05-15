@@ -137,6 +137,8 @@ public class UserRest  extends AbstractController<User, UserDto, UserCriteria, U
 
     @PostMapping("/changePassword")
     public  boolean changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
+        System.out.println(changePasswordRequest.getUsername());
+        System.out.println(changePasswordRequest.getPassword());
         return service.changePassword(changePasswordRequest.getUsername(), changePasswordRequest.getPassword());
     }
 

@@ -1,19 +1,23 @@
-import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import {Component, DoCheck, OnChanges, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from "./service/app.layout.service";
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
+import {reflectTypeEntityToDeclaration} from "@angular/compiler-cli/src/ngtsc/reflection";
+
 
 @Component({
     selector: 'app-layout',
     templateUrl: './app.layout.component.html'
 })
-export class AppLayoutComponent implements OnDestroy {
+export class AppLayoutComponent implements OnDestroy ,OnInit{
 
     menuClick = true;
     resetMenu = true;
     overlayMenuOpenSubscription: Subscription;
+    currentPath=""
+    showStatistic=true;
 
     menuOutsideClickListener: any;
 
@@ -23,7 +27,7 @@ export class AppLayoutComponent implements OnDestroy {
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor( public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -50,14 +54,29 @@ export class AppLayoutComponent implements OnDestroy {
             if (this.layoutService.state.staticMenuMobileActive) {
                 this.blockBodyScroll();
             }
-        });
+        }
+
+        );
+
+
 
         this.router.events.pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(() => {
                 this.hideMenu();
                 this.hideProfileMenu();
             });
+
+
     }
+    ngOnInit() {
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                this.currentPath = event.url;
+                console.log(this.currentPath);
+            }
+        });
+    }
+
 
     hideMenu() {
         this.layoutService.state.overlayMenuActive = false;
@@ -97,6 +116,13 @@ export class AppLayoutComponent implements OnDestroy {
         }
     }
 
+    checkPath() {
+        if(this.currentPath=="/app/admin"||this.currentPath==""){
+            return true;
+        }else
+            return false;
+    }
+
     get containerClass() {
         return {
             'layout-theme-light': this.layoutService.config.colorScheme === 'light',
@@ -124,6 +150,14 @@ export class AppLayoutComponent implements OnDestroy {
             this.menuOutsideClickListener();
         }
     }
+
+
+    click() {
+        this.router.navigateByUrl('/app/admin/profil');
+    }
+
+    protected readonly alert = alert;
+    protected readonly console = console;
 
 
 }

@@ -7,6 +7,7 @@ import {UserDto} from "../../../../../zynerator/security/shared/model/User.model
 import {MedecinDto} from "../../../../../shared/model/commun/Medecin.model";
 import {element} from "protractor";
 import {ProfilAdminService} from "../../../../../shared/service/admin/profil/ProfilAdmin.service";
+import {InfermierDto} from "../../../../../shared/model/commun/Infermier.model";
 
 
 @Component({
@@ -42,7 +43,7 @@ export class ProfilComponent implements OnInit{
 
         if(this.newPassword != "" && this.confermedPassword != ""){
             if (this.confermedPassword==this.newPassword){
-                this.service.editPassword(this.authenticatedUser.username,this.confermedPassword).subscribe(
+                this.service.editPassword(this.authenticatedMedecin.username,this.confermedPassword).subscribe(
                     res=>{
                         if(res){
                             this.editDialog = false;
@@ -75,14 +76,16 @@ export class ProfilComponent implements OnInit{
 
     }
 
+    get authenticatedMedecin(): MedecinDto {
+        return this.authService.authenticatedMedecin;
+    }
+
+    set authenticatedMedecin(value: MedecinDto) {
+        this.authService.authenticatedMedecin = value;
+    }
 
 
-    get authenticatedUser(): UserDto{
-        return this.authService.authenticatedUser;
-    }
-    set authenticatedUser(userDto: UserDto){
-        this.authService.authenticatedUser = userDto;
-    }
+
 
 
     showEditPassword() {

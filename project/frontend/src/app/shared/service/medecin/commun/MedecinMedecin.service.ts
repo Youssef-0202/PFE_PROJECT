@@ -9,6 +9,7 @@ import * as moment from 'moment/moment';
 import {MedecinDto} from 'src/app/shared/model/commun/Medecin.model';
 import {MedecinCriteria} from 'src/app/shared/criteria/commun/MedecinCriteria.model';
 import {AbstractService} from 'src/app/zynerator/service/AbstractService';
+import {InfermierDto} from "../../../model/commun/Infermier.model";
 
 
 @Injectable({
@@ -63,6 +64,10 @@ export class MedecinMedecinService {
 
     public save(): Observable<MedecinDto> {
         return this.http.post<MedecinDto>(this.API, this.item);
+    }
+
+    findById(id:number) {
+        return this.http.get<MedecinDto> (this.API+'id/'+id)
     }
 
     public delete(dto: MedecinDto) {
@@ -300,5 +305,6 @@ export class MedecinMedecinService {
     set entityName(value: string) {
         this._entityName = value;
     }
+
 
 }

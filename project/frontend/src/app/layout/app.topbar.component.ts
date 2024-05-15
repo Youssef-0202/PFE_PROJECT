@@ -19,6 +19,7 @@ export class AppTopBarComponent implements OnInit{
     roleInfermier=false;
     editDialog = false ;
     languageOptions: SelectItem[];
+    showProfil:boolean=false;
     selectedLanguage: string;
 
 
@@ -32,9 +33,43 @@ export class AppTopBarComponent implements OnInit{
     public async edit(dto: UserDto) {
         this.userService.findByUsername(dto.username).subscribe(res => {
             this.item = res;
+            console.log(this.item);
             this.editDialog = true;
         });
-        this.router.navigate(['admin/profil'])
+    }
+    showProfilRouter() {
+        if(this.roleAdmin){
+            this.showProfil=!this.showProfil;
+            if(this.showProfil){
+                this.service.onMenuToggle();
+                this.router.navigateByUrl('/app/admin/profil');
+            }else {
+                this.showProfil=false;
+                this.service.onMenuToggle();
+                this.router.navigateByUrl('/app/admin');
+            }
+        }else if(this.roleInfermier){
+            this.showProfil=!this.showProfil;
+            if(this.showProfil){
+                this.service.onMenuToggle();
+                this.router.navigateByUrl('/app/infermier/profil');
+            }else {
+                this.showProfil=false;
+                this.service.onMenuToggle();
+                this.router.navigateByUrl('/app/infermier');
+            }
+        }else if(this.roleMedecin){
+            this.showProfil=!this.showProfil;
+            if(this.showProfil){
+                this.service.onMenuToggle();
+                this.router.navigateByUrl('/app/medecin/profil');
+            }else {
+                this.showProfil=false;
+                this.service.onMenuToggle();
+                this.router.navigateByUrl('/app/medecin');
+            }
+        }
+
     }
     public editUser(){
         this.userService.edit().subscribe(data => this.authenticatedUser = data);
@@ -48,7 +83,7 @@ export class AppTopBarComponent implements OnInit{
 
 
 
-    constructor(public router:Router, public  layoutService:LayoutService ,public app: AppComponent, public appMain: AppLayoutComponent, private authService: AuthService, private translateService: TranslateService, private userService: UserService,) {
+    constructor(public service :LayoutService,public router:Router, public  layoutService:LayoutService ,public app: AppComponent, public appMain: AppLayoutComponent, private authService: AuthService, private translateService: TranslateService, private userService: UserService,) {
         this.languageOptions = [
             { label: 'English', value: 'en' },
             { label: 'Français', value: 'fr' },
@@ -75,6 +110,11 @@ export class AppTopBarComponent implements OnInit{
         this.roleAdmin = false;
         this.roleMedecin=false;
         this.roleInfermier=false;
+        this.editDialog = false;
+        if(this.showProfil){
+            this.showProfil= false;
+            this.service.onMenuToggle();
+        }
         this.authService.logout();
     }
     get item(): UserDto {
@@ -94,12 +134,21 @@ export class AppTopBarComponent implements OnInit{
 
     background() {
         if(this.roleMedecin){
-            return {"background-color":"#0b4d85"}
+            return {"background-color":"orange"}
         }
         else if(this.roleInfermier){
             return {"background-color":"#e681b3"}
         }else {
             return {"background-color":"rosybrown"}
         }
+    }
+
+
+    spanClick() {
+        if(this.showProfil){
+            this.service.onMenuToggle();
+            this.showProfil=false;
+        }
+        this.router.navigateByUrl('/app/admin')
     }
 }

@@ -17,7 +17,7 @@ export class AppMenuComponent implements OnInit {
   modelAdmin: any[];
   modelMedecin: any[];
   modelInfermier: any[];
-constructor(public layoutService: LayoutService, public app: AppComponent, public appMain: AppLayoutComponent, private roleService: RoleService, private authService: AuthService, private router: Router) { }
+constructor( public app: AppComponent, public appMain: AppLayoutComponent, private roleService: RoleService, private authService: AuthService, private router: Router) { }
   ngOnInit() {
     this.modelAdmin =
       [

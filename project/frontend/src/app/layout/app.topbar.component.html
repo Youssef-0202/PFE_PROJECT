@@ -8,7 +8,7 @@
         <i class="pi pi-bars"></i>
     </button>
 
-    <div *ngIf="roleAdmin" class="layout-topbar-logo " style="margin:25px" >
+    <div *ngIf="roleAdmin" class="layout-topbar-logo " style="margin:25px;cursor:pointer"  (click)="spanClick()">
         <span>Admin Dashbord</span>
     </div>
     <div *ngIf="roleInfermier" class="layout-topbar-logo " style="margin:25px" >
@@ -24,7 +24,7 @@
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
 
-        <button  class="p-link layout-topbar-button" (click)="edit(authenticatedUser)">
+        <button  class="p-link layout-topbar-button" (click)="showProfilRouter()" > <!--(click)="edit(authenticatedUser)"-->
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>

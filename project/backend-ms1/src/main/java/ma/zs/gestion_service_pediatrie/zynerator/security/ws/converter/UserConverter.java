@@ -6,6 +6,7 @@ import ma.zs.gestion_service_pediatrie.zynerator.security.ws.dto.UserDto;
 import ma.zs.gestion_service_pediatrie.zynerator.util.ListUtil;
 import ma.zs.gestion_service_pediatrie.zynerator.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,6 +22,8 @@ public class UserConverter extends AbstractConverter<User, UserDto> {
     private ModelPermissionUserConverter modelPermissionUserConverter ;
     @Autowired
     private ActionPermissionConverter actionPermissionConverter ;
+    @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
     private boolean modelPermissionUsers;
     private boolean roleUsers;
 
@@ -52,12 +55,14 @@ public class UserConverter extends AbstractConverter<User, UserDto> {
                 item.setAccountNonExpired(dto.getAccountNonExpired());
             if(dto.getAccountNonLocked() != null)
                 item.setAccountNonLocked(dto.getAccountNonLocked());
-            if(StringUtil.isNotEmpty(dto.getUsername()))
-                item.setUsername(dto.getUsername());
             if(StringUtil.isNotEmpty(dto.getPassword()))
                 item.setPassword(dto.getPassword());
             if(dto.getPasswordChanged() != null)
                 item.setPasswordChanged(dto.getPasswordChanged());
+            if(dto.getCreatedAt()!=null)
+                item.setCreatedAt(dto.getCreatedAt());
+            if(dto.getUsername()!=null)
+                item.setUsername(dto.getUsername());
 
             if(StringUtil.isNotEmpty(dto.getFirstName()))
                 item.setFirstName(dto.getFirstName());
@@ -86,12 +91,22 @@ public class UserConverter extends AbstractConverter<User, UserDto> {
             UserDto dto = new UserDto();
             if(StringUtil.isNotEmpty(item.getId()))
                 dto.setId(item.getId());
+            if(StringUtil.isNotEmpty(item.getFirstName()))
+                dto.setFirstName(item.getFirstName());
+            if(StringUtil.isNotEmpty(item.getLastName()))
+                dto.setLastName(item.getLastName());
+            if(StringUtil.isNotEmpty(item.getPhone()))
+                dto.setPhone(item.getPhone());
+            if(StringUtil.isNotEmpty(item.getCreatedAt().toString()))
+                dto.setCreatedAt(item.getCreatedAt());
             if(StringUtil.isNotEmpty(item.isCredentialsNonExpired()))
                 dto.setCredentialsNonExpired(item.isCredentialsNonExpired());
             if(StringUtil.isNotEmpty(item.isEnabled()))
                 dto.setEnabled(item.isEnabled());
             if(StringUtil.isNotEmpty(item.getEmail()))
                 dto.setEmail(item.getEmail());
+            if(StringUtil.isNotEmpty(item.isAccountNonExpired()))
+                dto.setAccountNonExpired(item.isAccountNonExpired());
             if(StringUtil.isNotEmpty(item.isAccountNonExpired()))
                 dto.setAccountNonExpired(item.isAccountNonExpired());
             if(StringUtil.isNotEmpty(item.isAccountNonLocked()))

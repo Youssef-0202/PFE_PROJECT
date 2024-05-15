@@ -3,6 +3,7 @@ package ma.zs.gestion_service_pediatrie.zynerator.security.ws.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ma.zs.gestion_service_pediatrie.zynerator.dto.AuditBaseDto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -23,6 +24,16 @@ public class UserDto  extends AuditBaseDto {
     protected String firstName;
     protected String lastName;
     protected String phone;
+
+    protected LocalDateTime createdAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     private List<ModelPermissionUserDto> modelPermissionUsers ;
     private List<RoleUserDto> roleUsers ;

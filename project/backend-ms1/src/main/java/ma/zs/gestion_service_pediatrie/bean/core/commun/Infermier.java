@@ -37,7 +37,7 @@ public class Infermier  extends User    {
     @Column(length = 500)
     private String telephone;
     @Column(length = 500)
-    private String photoProfil;
+    private byte[] photoProfil;
     @Column(columnDefinition = "boolean default false")
     private boolean credentialsNonExpired = false;
     @Column(columnDefinition = "boolean default false")
@@ -109,10 +109,10 @@ public class Infermier  extends User    {
     public void setTelephone(String telephone){
         this.telephone = telephone;
     }
-    public String getPhotoProfil(){
+    public byte[] getPhotoProfil(){
         return this.photoProfil;
     }
-    public void setPhotoProfil(String photoProfil){
+    public void setPhotoProfil(byte[] photoProfil){
         this.photoProfil = photoProfil;
     }
     @ManyToOne(fetch = FetchType.LAZY)

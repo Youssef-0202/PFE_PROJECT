@@ -52,8 +52,6 @@ public class Medecin  extends User    {
     @Column(columnDefinition = "boolean default false")
     private boolean passwordChanged = false;
 
-
-
     private Sexe sexe ;
 
 

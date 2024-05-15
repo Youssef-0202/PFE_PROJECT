@@ -69,7 +69,12 @@ import { RegisterMedecinComponent } from './register-medecin/register-medecin.co
                             path: 'security',
                             loadChildren: () => import('../security/security-routing.module').then(x => x.SecurityRoutingModule),
                             canActivate: [AuthGuard],
-                        }
+                        },
+                        {
+                            path: 'profil',
+                            loadChildren: () => import('./view/Profil/profil-medecin-routing.module').then(x => x.ProfilMedecinRoutingModule),
+                            canActivate: [AuthGuard],
+                        },
                     ]
                 },
             ]

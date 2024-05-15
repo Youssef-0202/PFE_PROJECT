@@ -61,6 +61,10 @@ export class MedecinAdminService {
         return this.http.post<PaginatedList<MedecinDto>>(this.API + 'find-paginated-by-criteria', criteria);
     }
 
+    public findByEmail(email:string):Observable<MedecinDto>{
+        return this.http.get<MedecinDto>(this.API+'email/'+ email );
+    }
+
     public save(): Observable<MedecinDto> {
         return this.http.post<MedecinDto>(this.API, this.item);
     }

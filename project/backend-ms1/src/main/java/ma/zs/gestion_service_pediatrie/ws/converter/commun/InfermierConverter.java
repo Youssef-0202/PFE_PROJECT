@@ -49,7 +49,7 @@ public class InfermierConverter {
                 item.setDateNaissance(DateUtil.stringEnToDate(dto.getDateNaissance()));
             if(StringUtil.isNotEmpty(dto.getTelephone()))
                 item.setTelephone(dto.getTelephone());
-            if(StringUtil.isNotEmpty(dto.getPhotoProfil()))
+            if(dto.getPhotoProfil()!= null)
                 item.setPhotoProfil(dto.getPhotoProfil());
             item.setCredentialsNonExpired(dto.getCredentialsNonExpired());
             item.setEnabled(dto.getEnabled());
@@ -91,7 +91,7 @@ public class InfermierConverter {
                 dto.setDateNaissance(DateUtil.dateTimeToString(item.getDateNaissance()));
             if(StringUtil.isNotEmpty(item.getTelephone()))
                 dto.setTelephone(item.getTelephone());
-            if(StringUtil.isNotEmpty(item.getPhotoProfil()))
+            if(item.getPhotoProfil()!= null)
                 dto.setPhotoProfil(item.getPhotoProfil());
             if(StringUtil.isNotEmpty(item.getCredentialsNonExpired()))
                 dto.setCredentialsNonExpired(item.getCredentialsNonExpired());
