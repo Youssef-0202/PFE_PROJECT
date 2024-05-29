@@ -38,7 +38,11 @@ import ma.zs.gestion_service_pediatrie.zynerator.dto.FileTempDto;
 @RequestMapping("/api/infermier/syntheseMedicale/")
 public class SyntheseMedicaleRestInfermier {
 
-
+    @Operation(summary = "find by num dossier")
+    @GetMapping("dossier/num/{num}")
+    public List<SyntheseMedicaleDto> findByDossierNum(@PathVariable String num){
+        return findDtos(service.findByNumDossier(num));
+    }
 
 
     @Operation(summary = "Finds a list of all syntheseMedicales")

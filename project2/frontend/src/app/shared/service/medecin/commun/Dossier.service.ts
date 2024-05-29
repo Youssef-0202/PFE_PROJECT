@@ -99,7 +99,6 @@ export class DossierService {
             res=>{
                 console.log(res)
                 this._antecedents=res;
-                console.log(this._antecedents);
             }
         )
     }

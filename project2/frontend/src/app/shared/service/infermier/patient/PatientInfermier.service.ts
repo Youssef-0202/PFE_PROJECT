@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-
 import {environment} from 'src/environments/environment';
 import {PaginatedList} from 'src/app/zynerator/dto/PaginatedList.model';
-import * as moment from 'moment/moment';
-
 import {PatientDto} from 'src/app/shared/model/patient/Patient.model';
 import {PatientCriteria} from 'src/app/shared/criteria/patient/PatientCriteria.model';
-import {AbstractService} from 'src/app/zynerator/service/AbstractService';
+import {ConsultationDto} from "../../../model/consultatio/Consultation.model";
+import moment from "moment";
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientInfermierService {
+    private _viewDialog2=false;
+    get viewDialog2(): boolean {
+        return this._viewDialog2;
+    }
+
+    set viewDialog2(value: boolean) {
+        this._viewDialog2 = value;
+    }
+
     protected _API = '';
     protected _items: Array<PatientDto>;
     protected _item: PatientDto;
@@ -24,7 +32,7 @@ export class PatientInfermierService {
     protected _viewDialog: boolean;
     protected _criteria: PatientCriteria;
     protected _validate = false;
-
+    private _patientsConsultation :Array<ConsultationDto>;
     private _createActionIsValid = true;
     private _editActionIsValid = true;
     private _listActionIsValid = true;
@@ -301,4 +309,12 @@ export class PatientInfermierService {
         this._entityName = value;
     }
 
+
+    get patientsConsultation(): Array<ConsultationDto> {
+        return this._patientsConsultation;
+    }
+
+    set patientsConsultation(value: Array<ConsultationDto>) {
+        this._patientsConsultation = value;
+    }
 }

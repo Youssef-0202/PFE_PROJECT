@@ -123,6 +123,7 @@ public class RadiologieMedecinServiceImpl implements RadiologieMedecinService {
     public List<Radiologie> findByConsultatuinId(Long id){
         return dao.findByConsultationId(id);
     }
+    @Transactional
     public int deleteByConsultatuinId(Long id){
         return dao.deleteByConsultationId(id);
     }

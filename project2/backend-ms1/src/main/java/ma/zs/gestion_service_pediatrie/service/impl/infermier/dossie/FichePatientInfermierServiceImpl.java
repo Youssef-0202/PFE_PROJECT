@@ -7,8 +7,6 @@ import ma.zs.gestion_service_pediatrie.dao.criteria.core.dossie.FichePatientCrit
 import ma.zs.gestion_service_pediatrie.dao.facade.core.dossie.FichePatientDao;
 import ma.zs.gestion_service_pediatrie.dao.specification.core.dossie.FichePatientSpecification;
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.dossie.FichePatientInfermierService;
-import ma.zs.gestion_service_pediatrie.zynerator.service.AbstractServiceImpl;
-import ma.zs.gestion_service_pediatrie.zynerator.util.ListUtil;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,14 +23,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.consultatio.ConsultationInfermierService ;
-import ma.zs.gestion_service_pediatrie.bean.core.consultatio.Consultation ;
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.dossie.AntecedentInfermierService ;
-import ma.zs.gestion_service_pediatrie.bean.core.dossie.Antecedent ;
 
-import java.util.List;
 @Service
 public class FichePatientInfermierServiceImpl implements FichePatientInfermierService {
-
+    @Override
+    public List<FichePatient> findByConsultationRef(String ref) {
+        return dao.findByConsultationRef(ref);
+    }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
     public FichePatient update(FichePatient t) {

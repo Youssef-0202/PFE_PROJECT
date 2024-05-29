@@ -155,7 +155,7 @@
                         <td>{{element.sexe?.libelle}}</td>
 
                         <td>
-                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="showListConsultation()"  *ngIf="editActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="showListConsultation(element?.numDossier)"  *ngIf="editActionIsValid"></button>
                        </td>
 
                         <td>

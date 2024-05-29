@@ -32,6 +32,21 @@ export class ProfilComponent implements OnInit{
 
     }
 
+    url: any = '';
+    onSelectFile(event) {
+        if (event.target.files && event.target.files[0]) {
+            var reader = new FileReader();
+
+            reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+            reader.onload = (event) => {
+                // called once readAsDataURL is completed
+                this.url = event.target.result;
+                console.log(this.url);
+            };
+        }
+    }
+
     public editUser(){
         this.service.edit().subscribe(religion=>{
             if(this.confermedPassword == "" && this.newPassword==""){

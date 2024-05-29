@@ -2,66 +2,6 @@
     <div class="col-12" style="background-color: transparent">
         <p-toast></p-toast>
         <div class="card" style="background-color: rgba(255, 255, 255, 0.5);">
-            <p-toolbar styleClass="mb-4">
-                <ng-template pTemplate="left">
-                    <button pButton pRipple label=" {{'Nouveau' | translate}}" icon="pi pi-plus" class="p-button-success mr-2 mb-2" (click)="openCreate()" *ngIf="createActionIsValid"></button>
-                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'Supprimer' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
-                    <button pButton pRipple label=" {{'Recherche' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
-                </ng-template>
-                <ng-template pTemplate="right">
-                    <div class="flex">
-                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-warm" [model]="excelPdfButons"></p-splitButton>
-                    </div>
-                </ng-template>
-
-            </p-toolbar>
-            <p-toolbar *ngIf="findByCriteriaShow">
-
-                <div class="col-12">
-                    <div class="flex flex-wrap p-fluid col-12">
-                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label  class="font-bold block mb-2" for="1">{{'patient.numDossier' | translate}}</label>
-                            <input  class="w-full"  pInputText id="1" type="text"  [(ngModel)]="criteria.numDossierLike">
-                        </div>
-                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label  class="font-bold block mb-2" for="2">{{'patient.nom' | translate}}</label>
-                            <input  class="w-full"  pInputText id="2" type="text"  [(ngModel)]="criteria.nomLike">
-                        </div>
-                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label  class="font-bold block mb-2" for="3">{{'patient.prenom' | translate}}</label>
-                            <input  class="w-full"  pInputText id="3" type="text"  [(ngModel)]="criteria.prenomLike">
-                        </div>
-
-                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label class="font-bold block mb-2" for="4-1">{{'patient.dateNaissanceMin' | translate}}</label>
-                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceFrom"
-                                    id="4-1" dateFormat="dd-MM-yy"  [showIcon]="true"  class="p-fluid"></p-calendar>
-                        </div>
-
-                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label  class="font-bold block mb-2" for="4-2">{{'patient.dateNaissanceMax' | translate}}</label>
-                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceTo"
-                                    id="4-2" dateFormat="dd-MM-yy"  [showIcon]="true" class="p-fluid"></p-calendar>
-                        </div>
-
-                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label  class="font-bold block mb-2" for="5">{{'patient.photoProfil' | translate}}</label>
-                            <input  class="w-full"  pInputText id="5" type="text"  [(ngModel)]="criteria.photoProfilLike">
-                        </div>
-                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                            <label  class="font-bold block mb-2" for="6-2">{{'patient.sexe' | translate}}</label>
-                            <p-dropdown [options]="sexes" [(ngModel)]="criteria.sexe" id="6" [filter]="true" class="p-fluid"
-                                        [showClear]="true"  placeholder="{{'patient.sexe' | translate}}" optionLabel="ref">
-                            </p-dropdown>
-                        </div>
-                    </div>
-                    <div [style]="{ marginTop : '1rem', display: 'flex', justifyContent: 'flex-end' }">
-                        <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" class="p-button-info mr-2" (click)="findPaginatedByCriteria()"></button>
-                    </div>
-                </div>
-
-
-            </p-toolbar>
 
 
             <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
@@ -125,7 +65,7 @@
                             </div>
                         </th>
 
-                        <th>Actions</th>
+                        <th>Consulter</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-element>
@@ -152,10 +92,7 @@
                         <td>{{element.sexe?.libelle}}</td>
 
                         <td>
-                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="edit(element)"  *ngIf="editActionIsValid"></button>
                             <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2" (click)="view(element)"  *ngIf="viewActionIsValid"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" (click)="delete(element)"  *ngIf="deleteActionIsValid"></button>
-                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning mr-2" (click)="duplicate(element)"  *ngIf="duplicateActionIsValid"></button>
                         </td>
                     </tr>
                 </ng-template>

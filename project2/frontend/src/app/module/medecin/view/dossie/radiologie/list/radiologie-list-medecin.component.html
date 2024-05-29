@@ -73,10 +73,10 @@
                     [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
                 <ng-template pTemplate="caption">
                     <div class="flex flex-column flex-row justify-content-between table-header">
-                        <h5 class="p-m-0">{{'radiologie.header' | translate}}</h5>
+                        <h5 class="p-m-0">{{'radiologie.header' | translate}} :</h5>
                         <span class="p-input-icon-left ml-auto">
                             <i class="pi pi-search"></i>
-                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                            <input pInputText type="text" placeholder="{{'' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
                         </span>
                     </div>
                 </ng-template>
@@ -89,16 +89,13 @@
                         <th pSortableColumn="ref">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'radiologie.ref' | translate}}</span>
-                                <p-sortIcon field="ref"></p-sortIcon>
-                                <p-columnFilter type="text" field="element.ref" display="menu" class="ml-auto"></p-columnFilter>
-                            </div>
+                           </div>
                         </th>
 
 
                         <th pSortableColumn="dateRadiologie">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'radiologie.dateRadiologie' | translate}}</span>
-                                <p-sortIcon field="dateRadiologie"></p-sortIcon>
                             </div>
                         </th>
 
@@ -106,17 +103,13 @@
                         <th pSortableColumn="commentaire">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'radiologie.commentaire' | translate}}</span>
-                                <p-sortIcon field="commentaire"></p-sortIcon>
-                                <p-columnFilter type="text" field="element.commentaire" display="menu" class="ml-auto"></p-columnFilter>
-                            </div>
+                           </div>
                         </th>
 
 
                         <th pSortableColumn="imageScann">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'radiologie.imageScann' | translate}}</span>
-                                <p-sortIcon field="imageScann"></p-sortIcon>
-                                <p-columnFilter type="text" field="element.imageScann" display="menu" class="ml-auto"></p-columnFilter>
                             </div>
                         </th>
 
@@ -124,7 +117,6 @@
                         <th pSortableColumn="consultatuin">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'radiologie.consultatuin' | translate}}</span>
-                                <p-sortIcon field="consultatuin"></p-sortIcon>
                             </div>
                         </th>
 
@@ -132,7 +124,6 @@
                         <th pSortableColumn="typeImage">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'radiologie.typeImage' | translate}}</span>
-                                <p-sortIcon field="typeImage"></p-sortIcon>
                             </div>
                         </th>
 
@@ -148,7 +139,7 @@
                         <td>{{element.ref}}</td>
 
 
-                        <td>{{element.dateRadiologie | date :'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{element.dateRadiologie | date :'dd/MM/yyyy ' }}</td>
 
 
                         <td>{{element.commentaire}}</td>
@@ -173,7 +164,7 @@
 
                 <ng-template pTemplate="summary">
                     <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
-                    <div class="p-d-flex p-ai-center p-jc-between">
+                    <div class="p-d-flex p-ai-center p-jc-between mt-4">
                         En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'radiologie' : 'radiologies' : 0 }}.
                     </div>
                 </ng-template>

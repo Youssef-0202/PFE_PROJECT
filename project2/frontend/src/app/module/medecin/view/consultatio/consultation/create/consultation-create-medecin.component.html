@@ -92,14 +92,14 @@
                                                                     <div class="field col-11 md:col-6">
                                                                         <label>Epreuve</label>
                                                                         <p-dropdown  appendTo="body"  [options]="epreuves" [(ngModel)]="analyseMedicaleElement.epreuve"
-                                                                                     id="5"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="ref"
+                                                                                     id="5"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
                                                                                      placeholder="Epreuve"  >
                                                                         </p-dropdown>
 
                                                                     </div>
 
-                                                        <div class="field col-12 md:col-1">
-                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addAnalyseMedicale()"></button>
+                                                        <div class="field col-12 md:col-2">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="Ajouter" (click)="addAnalyseMedicale()"></button>
                                                         </div>
 
                                                     </div>
@@ -123,7 +123,7 @@
                                                                                 <td>{{p.dateAnalyseMedicale | date: dateFormatColumn}}</td>
                                                                                 <td>{{p.valeur}}</td>
                                                                                 <td>{{p.valeurRang}}</td>
-                                                                            <td>{{p.epreuve?.ref}}</td>
+                                                                            <td>{{p.epreuve?.libelle}}</td>
                                                                     <td>
                                                                         <button (click)="deleteAnalyseMedicale(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
                                                                         <button (click)="editAnalyseMedicale(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
@@ -260,14 +260,14 @@
                                                                     <div class="field col-11 md:col-6">
                                                                         <label>Type image</label>
                                                                         <p-dropdown  appendTo="body"  [options]="typeImages" [(ngModel)]="radiologieElement.typeImage"
-                                                                                     id="6"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="ref"
+                                                                                     id="6"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
                                                                                      placeholder="Type image"  >
                                                                         </p-dropdown>
 
                                                                     </div>
 
-                                                        <div class="field col-12 md:col-1">
-                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addRadiologie()"></button>
+                                                        <div class="field col-12 md:col-2">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="Ajouter" (click)="addRadiologie()"></button>
                                                         </div>
 
                                                     </div>
@@ -291,7 +291,7 @@
                                                                                 <td>{{p.dateRadiologie | date: dateFormatColumn}}</td>
                                                                                 <td>{{p.commentaire}}</td>
                                                                                 <td>{{p.imageScann}}</td>
-                                                                            <td>{{p.typeImage?.ref}}</td>
+                                                                            <td>{{p.typeImage?.libelle}}</td>
                                                                     <td>
                                                                         <button (click)="deleteRadiologie(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
                                                                         <button (click)="editRadiologie(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
@@ -326,8 +326,8 @@
                                                                                id="3" [(ngModel)]="diagnosticElement.description" autofocus   >
 
                                                                     </div>
-                                                        <div class="field col-12 md:col-1">
-                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addDiagnostic()"></button>
+                                                        <div class="field col-12 md:col-2">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="Ajouter" (click)="addDiagnostic()"></button>
                                                         </div>
 
                                                     </div>
@@ -381,8 +381,8 @@
                                                                                id="3" [(ngModel)]="syntheseMedicaleElement.description" autofocus   >
 
                                                                     </div>
-                                                        <div class="field col-12 md:col-1">
-                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addSyntheseMedicale()"></button>
+                                                        <div class="field col-12 md:col-2">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="Ajouter" (click)="addSyntheseMedicale()"></button>
                                                         </div>
 
                                                     </div>

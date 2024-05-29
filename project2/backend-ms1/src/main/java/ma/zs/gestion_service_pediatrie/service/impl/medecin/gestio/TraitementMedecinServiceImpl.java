@@ -134,6 +134,8 @@ public class TraitementMedecinServiceImpl implements TraitementMedecinService {
     public List<Traitement> findByConsultatuinId(Long id){
         return dao.findByConsultatuinId(id);
     }
+
+    @Transactional
     public int deleteByConsultatuinId(Long id){
         return dao.deleteByConsultatuinId(id);
     }
@@ -155,7 +157,7 @@ public class TraitementMedecinServiceImpl implements TraitementMedecinService {
     }
 
     public void deleteByIdIn(List<Long> ids) {
-        //dao.deleteByIdIn(ids);
+
     }
 	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)

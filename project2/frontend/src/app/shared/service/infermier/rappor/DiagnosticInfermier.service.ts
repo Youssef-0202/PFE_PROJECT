@@ -101,6 +101,11 @@ export class DiagnosticInfermierService {
         return this.http.post<Array<DiagnosticDto>>(this.API + 'import-excel', formData);
     }
 
+    findByPationNumDossier(num: string) {
+        return this.http.get<Array<DiagnosticDto>>('http://localhost:8036/api/infermier/diagnostic/dossier/num/'+num)
+
+    }
+
 
 
     public format(myDate: Date): Date {

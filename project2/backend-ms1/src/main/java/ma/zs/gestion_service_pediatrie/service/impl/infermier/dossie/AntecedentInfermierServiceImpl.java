@@ -7,8 +7,7 @@ import ma.zs.gestion_service_pediatrie.dao.criteria.core.dossie.AntecedentCriter
 import ma.zs.gestion_service_pediatrie.dao.facade.core.dossie.AntecedentDao;
 import ma.zs.gestion_service_pediatrie.dao.specification.core.dossie.AntecedentSpecification;
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.dossie.AntecedentInfermierService;
-import ma.zs.gestion_service_pediatrie.zynerator.service.AbstractServiceImpl;
-import ma.zs.gestion_service_pediatrie.zynerator.util.ListUtil;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,12 +24,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.dossie.GroupeSanguinInfermierService ;
-import ma.zs.gestion_service_pediatrie.bean.core.dossie.GroupeSanguin ;
 
-import java.util.List;
 @Service
 public class AntecedentInfermierServiceImpl implements AntecedentInfermierService {
-
+   @Override
+    @Query("SELECT a.antecedent FROM FichePatient a WHERE a.consultation.patient.numDossier = :nom")
+    public List<Antecedent> findNumDossier(String nom) {
+        return dao.findNumDossier(nom);
+    }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
     public Antecedent update(Antecedent t) {

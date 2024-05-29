@@ -128,6 +128,7 @@ public class SyntheseMedicaleMedecinServiceImpl implements SyntheseMedicaleMedec
     public List<SyntheseMedicale> findByConsultationId(Long id){
         return dao.findByConsultationId(id);
     }
+    @Transactional
     public int deleteByConsultationId(Long id){
         return dao.deleteByConsultationId(id);
     }

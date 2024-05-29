@@ -7,8 +7,7 @@ import ma.zs.gestion_service_pediatrie.dao.criteria.core.rappor.SyntheseMedicale
 import ma.zs.gestion_service_pediatrie.dao.facade.core.rappor.SyntheseMedicaleDao;
 import ma.zs.gestion_service_pediatrie.dao.specification.core.rappor.SyntheseMedicaleSpecification;
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.rappor.SyntheseMedicaleInfermierService;
-import ma.zs.gestion_service_pediatrie.zynerator.service.AbstractServiceImpl;
-import ma.zs.gestion_service_pediatrie.zynerator.util.ListUtil;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,12 +24,15 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.zs.gestion_service_pediatrie.service.facade.infermier.consultatio.ConsultationInfermierService ;
-import ma.zs.gestion_service_pediatrie.bean.core.consultatio.Consultation ;
 
-import java.util.List;
 @Service
 public class SyntheseMedicaleInfermierServiceImpl implements SyntheseMedicaleInfermierService {
 
+    @Override
+    @Query("SELECT a.syntheseMedicale FROM Consultation a WHERE a.patient.numDossier = :nom")
+    public List<SyntheseMedicale> findByNumDossier(String nom) {
+        return dao.findByNumDossier(nom);
+    }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
     public SyntheseMedicale update(SyntheseMedicale t) {

@@ -19,7 +19,7 @@
         <div class="card mb-0 rounded-4">
             <div class="flex justify-content-between mb-3">
                 <div>
-                    <span class="block text-500 font-medium mb-3">Infermiers</span>
+                    <span class="block text-500 font-medium mb-3">Infirmiers</span>
                     <div class="text-900 font-medium text-xl">{{ infermiers?.length }}</div>
                 </div>
                 <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
@@ -77,7 +77,7 @@
 
                         <tr>
                             <td style="width: 15%; min-width: 5rem;">
-                                <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                <img src="" class="shadow-4" alt="" width="50">
                             </td>
                             <td style="width: 35%; min-width: 7rem;">{{lastMedecins[0]?.nom}}</td>
                             <td style="width: 35%; min-width: 8rem;">{{lastMedecins[0]?.prenom}}</td>
@@ -87,7 +87,7 @@
 
                         <tr>
                             <td style="width: 15%; min-width: 5rem;">
-                                <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                <img src="" class="shadow-4" alt="" width="50">
                             </td>
                             <td style="width: 35%; min-width: 7rem;">{{lastMedecins[1]?.nom}}</td>
                             <td style="width: 35%; min-width: 8rem;">{{lastMedecins[1]?.prenom}}</td>
@@ -95,26 +95,26 @@
                         </tr>
                         <tr>
                             <td style="width: 15%; min-width: 5rem;">
-                                <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                <img src="" class="shadow-4" alt="" width="50">
                             </td>
                             <td style="width: 35%; min-width: 7rem;">{{lastInfermiers[0]?.nom}}</td>
                             <td style="width: 35%; min-width: 8rem;">{{lastInfermiers[0]?.prenom}}</td>
-                            <td style="width: 15%;">Infermier</td>
+                            <td style="width: 15%;">Infirmier</td>
                         </tr>
 
 
                         <tr>
                             <td style="width: 15%; min-width: 5rem;">
-                                <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                <img src="" class="shadow-4" alt="" width="50">
                             </td>
                             <td style="width: 35%; min-width: 7rem;">{{lastInfermiers[1]?.nom}}</td>
                             <td style="width: 35%; min-width: 8rem;">{{lastInfermiers[1]?.prenom}}</td>
-                            <td style="width: 15%;">Infermier</td>
+                            <td style="width: 15%;">Infirmier</td>
                         </tr>
 
                         <tr>
                             <td style="width: 15%; min-width: 5rem;">
-                                <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                <img src="" class="shadow-4" alt="" width="50">
                             </td>
                             <td style="width: 35%; min-width: 7rem;">{{lastPationts[0]?.nom}}</td>
                             <td style="width: 35%; min-width: 8rem;">{{lastPationts[0]?.prenom}}</td>
@@ -124,10 +124,10 @@
 
                         <tr>
                             <td style="width: 15%; min-width: 5rem;">
-                                <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                <img src="" class="shadow-4" alt="" width="50">
                             </td>
-                            <td style="width: 35%; min-width: 7rem;">{{lastPationts[0]?.nom}}</td>
-                            <td style="width: 35%; min-width: 8rem;" >{{lastPationts[0]?.prenom}}</td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastPationts[1]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;" >{{lastPationts[1]?.prenom}}</td>
                             <td style="width: 15%;">Patient</td>
                         </tr>
                     </ng-template>
@@ -136,7 +136,7 @@
     </div>
     <div class="col-6 xl:col-6 h-50">
         <div class="card  rounded-4 ">
-            <h5 class="text-500 mb-3" style="font-size:20px" >Répartition des utilisateurs :</h5>
+            <h5 class="text-500 mb-3" style="font-size:20px" >Répartition des Utilisateurs et Consultations :</h5>
             <p-chart type="doughnut" [data]="data" [options]="options" />
         </div>
     </div>

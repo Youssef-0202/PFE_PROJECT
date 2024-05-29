@@ -137,6 +137,7 @@ public class AnalyseMedicaleMedecinServiceImpl implements AnalyseMedicaleMedecin
     public List<AnalyseMedicale> findByConsultationId(Long id){
         return dao.findByConsultationId(id);
     }
+    @Transactional
     public int deleteByConsultationId(Long id){
         return dao.deleteByConsultationId(id);
     }

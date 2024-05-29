@@ -18,14 +18,14 @@
                                                     <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="{{'fichePatient.dateFichePatient' | translate}}"  [(ngModel)]="item.dateFichePatient"
                                                             dateFormat="{{dateFormat}}"  >
                                                     </p-calendar>
-                                                    
+
                                                 </div>
 
                                                 <div class="field col-12 md:col-6">
                                                     <label for="3">{{'fichePatient.antecedentFamillial' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'fichePatient.antecedentFamillial' | translate}}" id="3" [(ngModel)]="item.antecedentFamillial"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -34,7 +34,7 @@
                                                     <label for="4">{{'fichePatient.histoireMaladie' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'fichePatient.histoireMaladie' | translate}}" id="4" [(ngModel)]="item.histoireMaladie"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -43,7 +43,7 @@
                                                     <label for="5">{{'fichePatient.examenFichePatient' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'fichePatient.examenFichePatient' | translate}}" id="5" [(ngModel)]="item.examenFichePatient"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -52,7 +52,7 @@
                                                     <label for="6">{{'fichePatient.conclusionFichePatient' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'fichePatient.conclusionFichePatient' | translate}}" id="6" [(ngModel)]="item.conclusionFichePatient"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -60,9 +60,9 @@
                                             <div class="field col-11 md:col-6">
                                                 <label for="7">{{'fichePatient.antecedent' | translate}}</label>
                                                 <p-dropdown  appendTo="body"  [options]="antecedents" [(ngModel)]="item.antecedent" id="7" [filter]="true" filterMatchMode="contains"
-                                                        [showClear]="true" optionLabel="ref" placeholder="{{'fichePatient.antecedent' | translate}}"  >
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'fichePatient.antecedent' | translate}}"  >
                                                 </p-dropdown>
-                                                
+
                                             </div>
 
                                             <div class="field col-11 md:col-6">
@@ -70,7 +70,7 @@
                                                 <p-dropdown  appendTo="body"  [options]="consultations" [(ngModel)]="item.consultation" id="8" [filter]="true" filterMatchMode="contains"
                                                         [showClear]="true" optionLabel="ref" placeholder="{{'fichePatient.consultation' | translate}}"  >
                                                 </p-dropdown>
-                                                
+
                                             </div>
 
                                 </div>

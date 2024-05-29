@@ -134,10 +134,10 @@ export class AppTopBarComponent implements OnInit{
 
     background() {
         if(this.roleMedecin){
-            return {"background-color":"orange"}
+            return {"background-color":"#c5e3f6"}
         }
         else if(this.roleInfermier){
-            return {"background-color":"#e681b3"}
+            return {"background-color":"#f5eded"}
         }else {
             return {"background-color":"#B0B1B3"}
         }

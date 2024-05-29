@@ -4,13 +4,13 @@
         <div class="card">
             <p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus" class="p-button-info mr-2 mb-2" (click)="openCreate('Consultation')" *ngIf="createActionIsValid"></button>
-                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
-                    <button pButton pRipple label=" {{'search' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
+                    <button pButton pRipple label=" {{'Nouveau' | translate}}" icon="pi pi-plus" class="p-button-success mr-2 mb-2" (click)="openCreate()" *ngIf="createActionIsValid"></button>
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'Supprimer' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
+                    <button pButton pRipple label=" {{'Recherche' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
                 </ng-template>
                 <ng-template pTemplate="right">
                     <div class="flex">
-                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-secondary" [model]="excelPdfButons"></p-splitButton>
+                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-warm" [model]="excelPdfButons"></p-splitButton>
                     </div>
                 </ng-template>
 
@@ -88,10 +88,10 @@
                      [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
                 <ng-template pTemplate="caption">
                     <div class="flex flex-column flex-row justify-content-between table-header">
-                        <h5 class="p-m-0">{{'consultation.header' | translate}}</h5>
+                        <h5 class="p-m-0">{{'consultation.header' | translate}} :</h5>
                         <span class="p-input-icon-left ml-auto">
                             <i class="pi pi-search"></i>
-                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                            <input pInputText type="text" placeholder="{{'' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
                         </span>
                     </div>
                 </ng-template>
@@ -104,16 +104,13 @@
                         <th pSortableColumn="ref">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.ref' | translate}}</span>
-                                <p-sortIcon field="ref"></p-sortIcon>
-                                <p-columnFilter type="text" field="element.ref" display="menu" class="ml-auto"></p-columnFilter>
-                            </div>
+                             </div>
                         </th>
 
 
                         <th pSortableColumn="dateConsultation">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.dateConsultation' | translate}}</span>
-                                <p-sortIcon field="dateConsultation"></p-sortIcon>
                             </div>
                         </th>
 
@@ -121,24 +118,20 @@
                         <th pSortableColumn="heureConsultation">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.heureConsultation' | translate}}</span>
-                                <p-sortIcon field="heureConsultation"></p-sortIcon>
-                            </div>
+                           </div>
                         </th>
 
 
                         <th pSortableColumn="typeConsultation">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.typeConsultation' | translate}}</span>
-                                <p-sortIcon field="typeConsultation"></p-sortIcon>
-                                <p-columnFilter type="text" field="element.typeConsultation" display="menu" class="ml-auto"></p-columnFilter>
-                            </div>
+                             </div>
                         </th>
 
 
                         <th pSortableColumn="medecin">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.medecin' | translate}}</span>
-                                <p-sortIcon field="medecin"></p-sortIcon>
                             </div>
                         </th>
 
@@ -146,7 +139,6 @@
                         <th pSortableColumn="infermier">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.infermier' | translate}}</span>
-                                <p-sortIcon field="infermier"></p-sortIcon>
                             </div>
                         </th>
 
@@ -154,7 +146,6 @@
                         <th pSortableColumn="patient">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'consultation.patient' | translate}}</span>
-                                <p-sortIcon field="patient"></p-sortIcon>
                             </div>
                         </th>
 
@@ -170,10 +161,10 @@
                         <td>{{element.ref}}</td>
 
 
-                        <td>{{element.dateConsultation | date :'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{element.dateConsultation | date :'dd/MM/yyyy ' }}</td>
 
 
-                        <td>{{element.heureConsultation | date :'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{element.heureConsultation | date :' HH:mm' }}</td>
 
 
                         <td>{{element.typeConsultation}}</td>
@@ -198,7 +189,7 @@
 
                 <ng-template pTemplate="summary">
                     <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
-                    <div class="p-d-flex p-ai-center p-jc-between">
+                    <div class="p-d-flex p-ai-center p-jc-between mt-4">
                         En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'consultation' : 'consultations' : 0 }}.
                     </div>
                 </ng-template>

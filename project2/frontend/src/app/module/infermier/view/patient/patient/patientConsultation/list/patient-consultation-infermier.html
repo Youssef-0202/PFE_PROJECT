@@ -2,7 +2,7 @@
     <div class="col-12" style="background-color: transparent">
         <p-toast></p-toast>
         <div class="card">
-            <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false" [(selection)]="selections"
+            <p-table #dt [value]="patientConsultations" [columns]="cols" [rows]="8" [paginator]="false" [(selection)]="selections"
                      [globalFilterFields]="['ref', 'dateConsultation', 'heureConsultation', 'typeConsultation', 'medecinemail', 'infermieremail', 'patientnumDossier']"
                      [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                      currentPageReportTemplate="{{'les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
@@ -100,7 +100,7 @@
                         <td>{{element.patient?.numDossier}}</td>
 
                         <td>
-                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2"></button>   <!--(click)="view(element)"  *ngIf="viewActionIsValid"-->
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2" (click)="view(element.ref)" ></button>   <!-- *ngIf="viewActionIsValid"-->
                         </td>
                     </tr>
                 </ng-template>
@@ -108,5 +108,6 @@
 
             </p-table>
         </div>
+        <app-patient-consultation-view-infermier *ngIf="viewDialog2"></app-patient-consultation-view-infermier>
     </div>
 </div>

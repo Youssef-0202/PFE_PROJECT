@@ -48,7 +48,10 @@ import {PaginatorModule} from 'primeng/paginator';
 import {MatInputModule} from "@angular/material/input";
 import {NgxMatFileInputModule} from "@angular-material-components/file-input";
 import {MatIconModule} from "@angular/material/icon";
-import {PatientConsultationInfermier} from "./patient/patientConsultation/patient-consultation-infermier";
+import {PatientConsultationInfermier} from "./patient/patientConsultation/list/patient-consultation-infermier";
+import {
+    PatientConsultationViewInfermierComponent
+} from "./patient/patientConsultation/view/patient-consultation-view-infermier.component";
 
 
 
@@ -67,7 +70,8 @@ import {PatientConsultationInfermier} from "./patient/patientConsultation/patien
     PatientListInfermierComponent,
     PatientViewInfermierComponent,
     PatientEditInfermierComponent,
-      PatientConsultationInfermier
+      PatientConsultationInfermier,
+      PatientConsultationViewInfermierComponent
   ],
     imports: [
         CommonModule,
@@ -119,7 +123,9 @@ import {PatientConsultationInfermier} from "./patient/patientConsultation/patien
   PatientListInfermierComponent,
   PatientViewInfermierComponent,
   PatientEditInfermierComponent,
-      PatientConsultationInfermier
+      PatientConsultationInfermier,
+      PatientConsultationViewInfermierComponent
+
   ],
 })
 export class PatientInfermierModule { }

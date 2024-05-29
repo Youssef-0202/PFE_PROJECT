@@ -45,7 +45,7 @@ export class AppLayoutComponent implements OnDestroy ,OnInit{
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(private dossierService:DossierService , private patientService:PatientMedecinService, private service:AuthService , public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor(private  authService: AuthService,private dossierService:DossierService , private patientService:PatientMedecinService, private service:AuthService , public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -148,7 +148,7 @@ export class AppLayoutComponent implements OnDestroy ,OnInit{
             return false;
     }
 
-    get containerClass() {
+    get  containerClass() {
         return {
             'layout-theme-light': this.layoutService.config.colorScheme === 'light',
             'layout-theme-dark': this.layoutService.config.colorScheme === 'dark',
@@ -248,13 +248,15 @@ export class AppLayoutComponent implements OnDestroy ,OnInit{
     }
 
     searchClick() {
-        this.patientService.findAll().subscribe(paginatedItems => {
-            this.items = paginatedItems;
-            this.totalRecords = paginatedItems.length;
-            console.log(this.items)
-            /*this.totalRecords = paginatedItems.dataSize;*/
-            this.selections = new Array<PatientDto>();
-        }, error => console.log(error));
+       if(this.authService.authenticatedMedecin.ref != ''){
+           this.patientService.findAll().subscribe(paginatedItems => {
+               this.items = paginatedItems;
+               this.totalRecords = paginatedItems.length;
+               console.log(this.items)
+               /*this.totalRecords = paginatedItems.dataSize;*/
+               this.selections = new Array<PatientDto>();
+           }, error => console.log(error));
+       }
     }
 
 
@@ -270,6 +272,15 @@ export class AppLayoutComponent implements OnDestroy ,OnInit{
         this.dossierService.findAllDiagnostics();
         this.dossierService.findAllSyntheses();
     }
+
+    getBackgroundImage(): string {
+       if (this.authService.authenticatedUser.roleUsers[0]?.role.authority === 'ROLE_MEDECIN') {
+           return 'url(src/assets/layout/images/cc-med.jpg)';
+        }
+       else  return 'url(src/assets/layout/images/cc-med.jpg)';
+    }
+
+
 
 
     get actualPationt(): PatientDto {

@@ -3,18 +3,19 @@
     overflow: auto;
     margin: 0 auto;
     position: relative;
+    font-size:24px;
     height: 100vh;
-    background: url("src/assets/layout/images/cc.jpg") no-repeat;
+    background: url("src/assets/layout/images/cc-med.jpg") no-repeat;
     background-size: cover;
 }
 
 .login-body .login-panel {
     padding: 0 70px 20px 70px;
-    height: 90%;
+    height: 80%;
     width: 556px;
     position: absolute;
     right: 35%;
-    top:40px;
+    top:90px;
     bottom:20px;
     background-color: rgba(255, 255, 255, 0.9);
     -moz-border-radius: 2px;

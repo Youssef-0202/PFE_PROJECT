@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {DossierService} from "../../../../shared/service/medecin/commun/Dossier.service";
 import {PatientMedecinService} from "../../../../shared/service/medecin/patient/PatientMedecin.service";
 import {AuthService} from "../../../../zynerator/security/shared/service/Auth.service";
@@ -7,6 +7,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {PatientCriteria} from "../../../../shared/criteria/patient/PatientCriteria.model";
 import {PatientDto} from "../../../../shared/model/patient/Patient.model";
+import {any} from "codelyzer/util/function";
 
 @Component({
   selector: 'app-dashboard-medecin',
@@ -24,6 +25,11 @@ export class DashboardComponent implements OnInit{
     overlayMenuOpenSubscription: Subscription;
     currentPath=""
     showStatistic=true;
+    @ViewChild(any) dt: any;
+    filterTable(value: string) {
+        this.dt.filterGlobal(value, 'contains');
+    }
+
 
     get totalRecords(): number {
         return this._totalRecords;

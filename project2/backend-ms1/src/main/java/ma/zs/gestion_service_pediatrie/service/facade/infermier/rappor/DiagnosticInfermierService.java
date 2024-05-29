@@ -6,6 +6,7 @@ import ma.zs.gestion_service_pediatrie.dao.criteria.core.rappor.DiagnosticCriter
 import ma.zs.gestion_service_pediatrie.zynerator.service.IService;
 
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface DiagnosticInfermierService {
@@ -20,6 +21,9 @@ public interface DiagnosticInfermierService {
 
 
 	Diagnostic create(Diagnostic t);
+
+    @Query("SELECT a.diagnostic FROM Consultation a WHERE a.patient.numDossier = :nom")
+    List<Diagnostic> findByNumDossier(String nom);
 
     Diagnostic update(Diagnostic t);
 

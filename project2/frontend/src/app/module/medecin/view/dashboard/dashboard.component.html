@@ -1,75 +1,19 @@
-<div class="col-12 "  >
-    <div class="card" style="background-color:#fcefee" >
-        <div class="card">
-            <p-toolbar styleClass="mb-4">
-                <ng-template pTemplate="left">
-                    <button pButton pRipple label=" {{'New Dossier' | translate}}" icon="pi pi-plus" class="p-button-success mr-2 mb-2  pr-6" (click)="clickNew()" ></button>
-                </ng-template>
-                <ng-template pTemplate="right">
-                    <div class="flex">
-                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-secondary" ></p-splitButton>
-                    </div>
-                </ng-template>
-            </p-toolbar >
-            <p-toolbar>
+<div class="col-12 " style="background-color: transparent;width:1200px" >
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.5);width:100%" >
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.5);width:100%">
+            <p-toolbar >
                 <div class="p-toolbar-group-start">
-                    <button pButton pRipple label=" {{'Recherch ' | translate}}" icon="pi pi-angle-down" class="p-button-warning mr-2 mb-2 pr-6" (click)="this.showSearch()" ></button>
-                </div>
+                    <button pButton pRipple label=" {{'New Dossier' | translate}}" icon="pi pi-plus" class="p-button-success mr-2 mb-2  pr-6" (click)="clickNew()" ></button>               </div>
                 <div class="p-toolbar-group-center " >
-                                            <span class="p-input-icon-left">
+                                            <span class="p-input-icon-left" >
                                             <i class="pi pi-search"></i>
-                                            <input pInputText placeholder="N° Dossier" class="pr-8 pl-8" (input)="dt.filterGlobal($event.target.value, 'contains')" [(ngModel)]="criteria.numDossier"  />
+                                            <input #i style="width:500px" pInputText placeholder="N° Dossier" class="pr-8 pl-8" (input)="dt.filterGlobal($event.target.value, 'contains')" [(ngModel)]="criteria.numDossier"  />
                                     </span>
                 </div>
                 <div class="p-toolbar-group-end">
                     <p-button icon="pi pi-search" severity="success" (click)="searchClick()" />
                 </div>
-                <p-toolbar *ngIf="findByCriteriaShow">
-
-                    <div class="col-12">
-                        <div class="flex flex-wrap p-fluid col-12">
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label  class="font-bold block mb-2" for="1">{{'patient.numDossier' | translate}}</label>
-                                <input  class="w-full"  pInputText id="1" type="text"  [(ngModel)]="criteria.numDossierLike">
-                            </div>
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label  class="font-bold block mb-2" for="2">{{'patient.nom' | translate}}</label>
-                                <input  class="w-full"  pInputText id="2" type="text"  [(ngModel)]="criteria.nomLike">
-                            </div>
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label  class="font-bold block mb-2" for="3">{{'patient.prenom' | translate}}</label>
-                                <input  class="w-full"  pInputText id="3" type="text"  [(ngModel)]="criteria.prenomLike">
-                            </div>
-
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label class="font-bold block mb-2" for="4-1">{{'patient.dateNaissanceMin' | translate}}</label>
-                                <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceFrom"
-                                            id="4-1" dateFormat="dd-MM-yy"  [showIcon]="true"  class="p-fluid"></p-calendar>
-                            </div>
-
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label  class="font-bold block mb-2" for="4-2">{{'patient.dateNaissanceMax' | translate}}</label>
-                                <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceTo"
-                                            id="4-2" dateFormat="dd-MM-yy"  [showIcon]="true" class="p-fluid"></p-calendar>
-                            </div>
-
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label  class="font-bold block mb-2" for="5">{{'patient.photoProfil' | translate}}</label>
-                                <input  class="w-full"  pInputText id="5" type="text"  [(ngModel)]="criteria.photoProfilLike">
-                            </div>
-                            <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
-                                <label  class="font-bold block mb-2" for="6">{{'patient.sexe' | translate}}</label>
-                                <p-dropdown  [(ngModel)]="criteria.sexe" id="6" [filter]="true" class="p-fluid"
-                                             [showClear]="true"  placeholder="{{'patient.sexe' | translate}}" optionLabel="ref">
-                                </p-dropdown>
-                            </div>
-                        </div>
-                        <div [style]="{ marginTop : '1rem', display: 'flex', justifyContent: 'flex-end' }">
-                            <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" (click)="findPaginatedByCriteria()" class="p-button-info mr-2"></button>
-                        </div>
-                    </div>
-                </p-toolbar>
-                <div class="table">
+                <div class="table"  >
                     <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
                              [globalFilterFields]="['numDossier', 'nom', 'prenom', 'dateNaissance', 'photoProfil', 'sexeref']" [(selection)]="selections"
                              [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
@@ -134,6 +78,8 @@
                         </ng-template>
                     </p-table>
                 </div>
+
+
             </p-toolbar>
         </div>
     </div>

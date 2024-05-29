@@ -57,6 +57,10 @@ export class FichePatientInfermierService {
         return this.http.get<Array<FichePatientDto>>(this.API + 'optimized');
     }
 
+    findByConsultationRef(ref: string) {
+        return this.http.get<Array<FichePatientDto>>('http://localhost:8036/api/infermier/fichePatient/consultation/num/'+ref)
+    }
+
     public findPaginatedByCriteria(criteria: FichePatientCriteria): Observable<PaginatedList<FichePatientDto>> {
         return this.http.post<PaginatedList<FichePatientDto>>(this.API + 'find-paginated-by-criteria', criteria);
     }

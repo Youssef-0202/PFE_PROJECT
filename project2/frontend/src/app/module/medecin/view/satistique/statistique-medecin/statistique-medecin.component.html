@@ -1,11 +1,10 @@
 <div class="grid mt-2">
-    <div class="col-12"   >
+    <div class="col-12"  style="background-color: transparent;width:1200px"   >
         <p-toast></p-toast>
-        <div class="card" style="background-color:#fcefee">
-            <p-toolbar styleClass="mb-4">
-                <h3 style="">Statistiques Generale :</h3>
-                <div class="grid ml-6 mt-2 rounded-4 " style="background-color:#fcefee; width:970px" >
-
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.5);width:100%">
+            <p-toolbar class="mb-4  rounded-6" >
+                <h3 class="text-500 mb-3" style="font-size:26px" >Statistiques Generale :</h3>
+                <div class="grid ml-6 mt-2 rounded-4 " style="background-color:transparent; width:970px" >
                     <div class="col-6 lg:col-6 xl:col-3">
                         <div class="card mb-0">
                             <div class="flex justify-content-between mb-3">
@@ -71,7 +70,7 @@
             <p-toolbar styleClass="mb-4">
                 <div class="card " style="width:100%;font-size:18px">
                     <div class="flex justify-content-between align-items-center mb-5">
-                        <h3 style="">Les types du consultation :</h3>
+                        <h3 class="text-500 mb-3" style="font-size:26px" >Les types du consultation :</h3>
                     </div>
                     <ul class="list-none p-0 m-0">
                         <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
@@ -123,21 +122,21 @@
             </p-toolbar>
             <p-toolbar styleClass="mb-4">
                 <div class="card" style="width:100%;font-size:18px">
-                    <h5>Les derniers insertions :</h5>
+                    <h3 class="text-500 mb-3" style="font-size:26px" >Les derniers insertions :</h3>
                     <p-table [value]="lastes" [paginator]="true" [rows]="5" responsiveLayout="scroll">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>Image</th>
-                                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-                                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-                                <th>View</th>
+                                <th pSortableColumn="name">Name</th>
+                                <th pSortableColumn="price">Price</th>
+                                <th>Type</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body">
 
                             <tr>
                                 <td style="width: 15%; min-width: 5rem;">
-                                    <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                    <img src="" class="shadow-4" alt="" width="50">
                                 </td>
                                 <td style="width: 35%; min-width: 7rem;">{{lastInfermiers[0]?.nom}}</td>
                                 <td style="width: 35%; min-width: 8rem;">{{lastInfermiers[0]?.prenom}}</td>
@@ -147,7 +146,7 @@
 
                             <tr>
                                 <td style="width: 15%; min-width: 5rem;">
-                                    <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                    <img src="" class="shadow-4" alt="" width="50">
                                 </td>
                                 <td style="width: 35%; min-width: 7rem;">{{lastInfermiers[1]?.nom}}</td>
                                 <td style="width: 35%; min-width: 8rem;">{{lastInfermiers[1]?.prenom}}</td>
@@ -155,7 +154,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 15%; min-width: 5rem;">
-                                    <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                    <img src="" class="shadow-4" alt="" width="50">
                                 </td>
                                 <td style="width: 35%; min-width: 7rem;">{{lastPationts[0]?.nom}}</td>
                                 <td style="width: 35%; min-width: 8rem;">{{lastPationts[0]?.prenom}}</td>
@@ -163,7 +162,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 15%; min-width: 5rem;">
-                                    <img src="assets/demo/images/product/" class="shadow-4" alt="" width="50">
+                                    <img src="" class="shadow-4" alt="" width="50">
                                 </td>
                                 <td style="width: 35%; min-width: 7rem;">{{lastPationts[0]?.nom}}</td>
                                 <td style="width: 35%; min-width: 8rem;" >{{lastPationts[0]?.prenom}}</td>
@@ -175,21 +174,23 @@
             </p-toolbar>
             <p-toolbar  styleClass="mb-4">
                 <div class="card" style="width:100%">
-                    <h5>Le nombre de patients :</h5>
+                    <h3 class="text-500 mb-3" style="font-size:26px" >Le nombre du consultations par mois :</h3>
                     <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
                 </div>
             </p-toolbar>
             <p-toolbar styleClass="mb-4">
                 <div class="card" style="width:100%" >
+                    <h3 class="text-500 mb-3" style="font-size:26px" >Le nombre du patients par mois :</h3>
                     <p-chart type="bar" [data]="data1" [options]="options1" />
                 </div>
             </p-toolbar>
-            <p-toolbar styleClass="mb-4">
+            <p-toolbar styleClass="mb-4" >
                     <div class="card" style="width:40%;display:inline" >
+                        <h3 class="text-500 mb-3" style="font-size:26px" >Répartition des Utilisateurs et Consultations :</h3>
                         <p-chart type="doughnut" [data]="data2" [options]="options2" />
                     </div>
                     <div class="card" style="width:50%">
-                        <h5>Linear Chart</h5>
+                        <h3 class="text-500 mb-3" style="font-size:26px" >Le nombre du consultations :</h3>
                         <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
                     </div>
             </p-toolbar>

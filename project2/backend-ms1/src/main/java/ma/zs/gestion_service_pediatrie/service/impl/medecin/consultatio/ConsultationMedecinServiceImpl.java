@@ -2,6 +2,10 @@ package ma.zs.gestion_service_pediatrie.service.impl.medecin.consultatio;
 
 
 import ma.zs.gestion_service_pediatrie.bean.core.commun.Medecin;
+import ma.zs.gestion_service_pediatrie.service.facade.medecin.gestio.CertificatMedecinService;
+import ma.zs.gestion_service_pediatrie.service.facade.medecin.gestio.OrdonnanceMedecinService;
+import ma.zs.gestion_service_pediatrie.service.facade.medecin.gestio.TraitementMedecinService;
+import ma.zs.gestion_service_pediatrie.ws.facade.admin.gestio.OrdonnanceRestAdmin;
 import ma.zs.gestion_service_pediatrie.zynerator.exception.EntityNotFoundException;
 import ma.zs.gestion_service_pediatrie.bean.core.consultatio.Consultation;
 import ma.zs.gestion_service_pediatrie.dao.criteria.core.consultatio.ConsultationCriteria;
@@ -112,7 +116,6 @@ public class ConsultationMedecinServiceImpl implements ConsultationMedecinServic
             content = dao.findAll();
         }
         return content;
-
     }
 
 
@@ -166,6 +169,9 @@ public class ConsultationMedecinServiceImpl implements ConsultationMedecinServic
 	public boolean deleteById(Long id) {
         boolean condition = deleteByIdCheckCondition(id);
         if (condition) {
+            traitementMedecinService.deleteByConsultatuinId(id);
+            certificatMedecinService.deleteByConsultatuinId(id);
+            ordonnanceMedecinService.deleteByConsultatuinId(id);
             deleteAssociatedLists(id);
             dao.deleteById(id);
         }
@@ -184,6 +190,7 @@ public class ConsultationMedecinServiceImpl implements ConsultationMedecinServic
     public int delete(Consultation t) {
         int result = 0;
         if (t != null) {
+
             deleteAssociatedLists(t.getId());
             dao.deleteById(t.getId());
             result = 1;
@@ -197,6 +204,7 @@ public class ConsultationMedecinServiceImpl implements ConsultationMedecinServic
         radiologieService.deleteByConsultatuinId(id);
         diagnosticService.deleteByConsultationId(id);
         syntheseMedicaleService.deleteByConsultationId(id);
+
     }
 
 
@@ -206,7 +214,11 @@ public class ConsultationMedecinServiceImpl implements ConsultationMedecinServic
     public List<Consultation> delete(List<Consultation> list) {
 		List<Consultation> result = new ArrayList();
         if (list != null) {
+
             for (Consultation t : list) {
+                traitementMedecinService.deleteByConsultatuinId(t.getId());
+                certificatMedecinService.deleteByConsultatuinId(t.getId());
+                ordonnanceMedecinService.deleteByConsultatuinId(t.getId());
                 int count = delete(t);
 				if(count == 0){
 					result.add(t);
@@ -390,6 +402,12 @@ public class ConsultationMedecinServiceImpl implements ConsultationMedecinServic
     private AnalyseMedicaleMedecinService analyseMedicaleService ;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TraitementMedecinService traitementMedecinService;
+    @Autowired
+    private OrdonnanceMedecinService ordonnanceMedecinService;
+    @Autowired
+    private CertificatMedecinService certificatMedecinService;
 
     private @Autowired ConsultationDao dao;
 

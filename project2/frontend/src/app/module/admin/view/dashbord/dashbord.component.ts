@@ -103,7 +103,7 @@ export class DashbordComponent {
     cercle(){
         console.log(this.lastes)
         this.data = {
-            labels: ['Medecin', 'Infermier', 'Patient','Consultation'],
+            labels: ['Medecin', 'Infirmier', 'Patient','Consultation'],
             datasets: [
                 {
                     data: [this.nbrMedecin, this.nbrInfernier, this.nbrPatient,this.nbrConsultation],

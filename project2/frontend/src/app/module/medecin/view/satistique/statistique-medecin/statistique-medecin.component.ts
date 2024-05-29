@@ -153,21 +153,14 @@ export class StatistiqueMedecinComponent implements OnInit{
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
-                    label: 'Homme',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    label: 'Consultations',
+                    data: [65, 59, 80, 81, 56, 66, 70],
                     fill: false,
                     backgroundColor: this.documentStyle.getPropertyValue('--bluegray-700'),
                     borderColor: this.documentStyle.getPropertyValue('--bluegray-700'),
                     tension: .4
                 },
-                {
-                    label: 'Femme',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
-                    backgroundColor: this.documentStyle.getPropertyValue('--green-600'),
-                    borderColor: this.documentStyle.getPropertyValue('--green-600'),
-                    tension: .4
-                }
+
             ]
         };
 
@@ -207,13 +200,13 @@ export class StatistiqueMedecinComponent implements OnInit{
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
-                    label: 'My First dataset',
+                    label: 'Homme',
                     backgroundColor: this.documentStyle.getPropertyValue('--blue-500'),
                     borderColor: this.documentStyle.getPropertyValue('--blue-500'),
                     data: [65, 59, 80, 81, 56, 55, 40]
                 },
                 {
-                    label: 'My Second dataset',
+                    label: 'Femme',
                     backgroundColor: this.documentStyle.getPropertyValue('--pink-500'),
                     borderColor: this.documentStyle.getPropertyValue('--pink-500'),
                     data: [28, 48, 40, 19, 86, 27, 90]
@@ -284,14 +277,14 @@ export class StatistiqueMedecinComponent implements OnInit{
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
-                    label: 'First Dataset',
+                    label: 'Homme',
                     data: [65, 59, 80, 81, 56, 55, 40],
                     fill: false,
                     borderColor: this.documentStyle.getPropertyValue('--blue-500'),
                     tension: 0.4
                 },
                 {
-                    label: 'Second Dataset',
+                    label: 'Femme',
                     data: [28, 48, 40, 19, 86, 27, 90],
                     fill: false,
                     borderColor: this.documentStyle.getPropertyValue('--pink-500'),
@@ -336,7 +329,7 @@ export class StatistiqueMedecinComponent implements OnInit{
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
-                    label: 'First Dataset',
+                    label: 'Homme',
                     data: [65, 59, 80, 81, 56, 55, 40],
                     fill: false,
                     backgroundColor: this.documentStyle.getPropertyValue('--primary-500'),
@@ -344,7 +337,7 @@ export class StatistiqueMedecinComponent implements OnInit{
                     tension: .4
                 },
                 {
-                    label: 'Second Dataset',
+                    label: 'Femme',
                     data: [28, 48, 40, 19, 86, 27, 90],
                     fill: false,
                     backgroundColor: this.documentStyle.getPropertyValue('--primary-200'),

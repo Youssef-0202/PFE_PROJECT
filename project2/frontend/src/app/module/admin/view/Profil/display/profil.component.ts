@@ -18,6 +18,21 @@ export class ProfilComponent implements OnInit{
     constructor(private service:ProfilAdminService ,private authService: AuthService) {
     }
 
+    url: any = '';
+    onSelectFile(event) {
+        if (event.target.files && event.target.files[0]) {
+            var reader = new FileReader();
+
+            reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+            reader.onload = (event) => {
+                // called once readAsDataURL is completed
+                this.url = event.target.result;
+                console.log(this.url);
+            };
+        }
+    }
+
     editDialog = false ;
     editActionIsValid: boolean=true;
     newPassword: string="";

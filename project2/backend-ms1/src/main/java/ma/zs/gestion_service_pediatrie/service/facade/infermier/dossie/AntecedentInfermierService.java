@@ -6,6 +6,7 @@ import ma.zs.gestion_service_pediatrie.dao.criteria.core.dossie.AntecedentCriter
 import ma.zs.gestion_service_pediatrie.zynerator.service.IService;
 
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface AntecedentInfermierService {
@@ -20,6 +21,9 @@ public interface AntecedentInfermierService {
 
 
 	Antecedent create(Antecedent t);
+
+    @Query("SELECT a.antecedent FROM FichePatient a WHERE a.consultation.patient.numDossier = :nom")
+    List<Antecedent> findNumDossier(String nom);
 
     Antecedent update(Antecedent t);
 

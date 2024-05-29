@@ -9,13 +9,13 @@
     [resizable]="false"
 >
     <ng-template pTemplate="content">
-        <p-tabView>
-            <p-tabPanel header="{{'Pationt :' | translate}}">
+        <p-tabView >
+            <p-tabPanel header="{{'Patient :' | translate}}" >
                 <p-toolbar styleClass="mb-4">
                     <div class="photoPersonel"></div>
                 </p-toolbar>
                 <p-toolbar styleClass="mb-4">
-                    <p-table [value]="array" style="width:100%">
+                    <p-table [value]="array"  class="table">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>Prenom</th>
@@ -29,7 +29,7 @@
                                 <td>{{element1.prenom}}</td>
                                 <td>{{element1.nom}}</td>
                                 <td>{{element1.dateNaissance | date : 'dd MMM yyyy'}}</td>
-                                <td>{{element1.sexe.libelle}}</td>
+                                <td>{{element1.sexe?.libelle}}</td>
                             </tr>
                         </ng-template>
                     </p-table>
@@ -85,7 +85,7 @@
                         <tr>
                             <td>{{element2.ref}}</td>
                             <td>{{element2.typeConsultation}}</td>
-                            <td>{{element2.medecin.nom}}</td>
+                            <td>{{element2.medecin?.nom}}</td>
                             <td>
                                 <button
                                     pButton
@@ -122,7 +122,7 @@
                     </ng-template>
                 </p-table>
             </p-tabPanel>
-            <p-tabPanel header="{{'Antecedent :' | translate}}">
+            <p-tabPanel header="{{'Antecedents :' | translate}}">
                 <p-table [value]="antecedents"  >
                     <ng-template pTemplate="header">
                         <tr>
@@ -309,33 +309,34 @@
                         </tr>
                     </ng-template>
                 </p-table>
+                <p-toolbar style="margin-top:10px">
+                    <div class="card" style="width: 100%;">
+                        <p-chart type="line" [data]="data" [options]="options" />
+                    </div>
+                </p-toolbar>
             </p-tabPanel>
             <p-tabPanel header="{{'Analyses :' | translate}}">
-                <p-toolbar styleClass="mb-4">
-                    <p-table [value]="analyses" style="width:100%"  >
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th>Reference</th>
-                                <th>Date d'Analyse </th>
-                                <th>Valeur </th>
-                                <th>ValeurRang</th>
-                                <th>Epreuve</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-element>
-                            <tr>
-                                <td>{{element.ref}}</td>
-                                <td>{{element.dateAnalyseMedicale | date:'dd MMM yyyy'}}</td>
-                                <td>{{element.valeur}}</td>
-                                <td>{{element.valeurRang}}</td>
-                                <td>{{element?.epreuve?.libelle}}</td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-                </p-toolbar>
-                <p-toolbar>
 
-                </p-toolbar>
+                <p-table [value]="analyses"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date d'Analyse </th>
+                            <th>Valeur </th>
+                            <th>ValeurRang</th>
+                            <th>Epreuve</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateAnalyseMedicale | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.valeur}}</td>
+                            <td>{{element.valeurRang}}</td>
+                            <td>{{element?.epreuve?.libelle}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
             </p-tabPanel>
             <p-tabPanel header="{{'Radiologie :' | translate}}">
                 <p-table [value]="radiologies"  >

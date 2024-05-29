@@ -33,7 +33,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
                     items: [
 					  {
 						label: 'Gestion de medecin',
-						icon: 'pi pi-wallet',
+						icon: 'pi pi-user',
 						items: [
 								  {
 									label: 'Liste medecin',
@@ -43,11 +43,11 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
 						]
 					  },
                         {
-                            label: 'Gestion infermier',
-                            icon: 'pi pi-wallet',
+                            label: 'Gestion infirmier',
+                            icon: 'pi pi-user',
                             items: [
                                 {
-                                    label: 'Liste infermier',
+                                    label: 'Liste infirmier',
                                     icon: 'pi pi-fw pi-plus-circle',
                                     routerLink: ['/app/admin/commun/infermier/list']
                                 },
@@ -55,7 +55,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
                         },
 					  {
 						label: 'Commun',
-						icon: 'pi pi-wallet',
+						icon: 'pi pi-clone',
 						items: [
 								  {
 									label: 'Liste sexe',
@@ -72,7 +72,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
 
 					  {
 						label: 'Patient',
-						icon: 'pi pi-wallet',
+						icon: 'pi pi-users',
 						items: [
 								  {
 									label: 'Liste patient contact',
@@ -111,7 +111,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
                     items: [
                         {
                             label: 'Patient',
-                            icon: 'pi pi-wallet',
+                            icon: 'pi pi-users',
                             items: [
                                 {
                                     label: 'Nouveau Patient',
@@ -132,7 +132,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
                         },
 					  {
 						label: 'Gestion medicale',
-						icon: 'pi pi-wallet',
+						icon: 'pi pi-folder-open',
 						items: [
 								  {
 									label: 'Certificat',
@@ -157,11 +157,11 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
 						]
 					  },
                         {
-                            label: 'Gestion infermier',
-                            icon: 'pi pi-wallet',
+                            label: 'Gestion infirmier',
+                            icon: 'pi pi-user',
                             items: [
                                 {
-                                    label: 'Liste infermier',
+                                    label: 'Liste infirmier',
                                     icon: 'pi pi-fw pi-plus-circle',
                                     routerLink: ['/app/medecin/commun/infermier/list']
                                 },
@@ -169,7 +169,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
                         },
 					  {
 						label: 'Gestion des Consultations',
-						icon: 'pi pi-wallet',
+						icon: 'pi   pi-file-export',
 						items: [
                                  {
                                      label: 'Consultation',
@@ -227,7 +227,7 @@ constructor( public app: AppComponent, public appMain: AppLayoutComponent, priva
                     items: [
                         {
 						label: 'Patient',
-						icon: 'pi pi-wallet',
+						icon: 'pi pi-users',
 						items: [
                             {
                                 label: 'Patient',

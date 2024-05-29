@@ -4,11 +4,14 @@ import {BehaviorSubject, Observable} from 'rxjs';
 
 import {environment} from 'src/environments/environment';
 import {PaginatedList} from 'src/app/zynerator/dto/PaginatedList.model';
-import * as moment from 'moment/moment';
+
 
 import {ConsultationDto} from 'src/app/shared/model/consultatio/Consultation.model';
 import {ConsultationCriteria} from 'src/app/shared/criteria/consultatio/ConsultationCriteria.model';
 import {AbstractService} from 'src/app/zynerator/service/AbstractService';
+import {element} from "protractor";
+import moment from "moment";
+
 
 
 @Injectable({
@@ -24,7 +27,7 @@ export class ConsultationInfermierService {
     protected _viewDialog: boolean;
     protected _criteria: ConsultationCriteria;
     protected _validate = false;
-
+    private _consultationPatient:ConsultationDto;
     private _createActionIsValid = true;
     private _editActionIsValid = true;
     private _listActionIsValid = true;
@@ -137,6 +140,15 @@ export class ConsultationInfermierService {
 
     public set item(value: ConsultationDto) {
         this._item = value;
+    }
+
+
+    get consultationPatient(): ConsultationDto {
+        return this._consultationPatient;
+    }
+
+    set consultationPatient(value: ConsultationDto) {
+        this._consultationPatient = value;
     }
 
     public get selections(): Array<ConsultationDto> {

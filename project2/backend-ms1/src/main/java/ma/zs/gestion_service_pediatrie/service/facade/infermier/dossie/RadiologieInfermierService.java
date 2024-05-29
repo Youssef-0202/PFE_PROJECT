@@ -24,6 +24,8 @@ public interface RadiologieInfermierService {
 
 	Radiologie create(Radiologie t);
 
+    List<Radiologie> findByConsultationRef(String ref);
+
     Radiologie update(Radiologie t);
 
     List<Radiologie> update(List<Radiologie> ts,boolean createIfNotExist);

@@ -26,12 +26,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/admin/infermier/")
 public class InfermierRestAdmin {
-
-
-
-
-
-
     @Operation(summary = "Finds a list of all infermiers")
     @GetMapping("")
     public ResponseEntity<List<InfermierDto>> findAll() throws Exception {

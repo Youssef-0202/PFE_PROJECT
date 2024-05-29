@@ -55,6 +55,12 @@ public class FichePatientRestInfermier {
         return res;
     }
 
+    @Operation(summary = "find by num dossier")
+    @GetMapping("consultation/num/{ref}")
+    public List<FichePatientDto> findByConsultationref(@PathVariable String ref){
+        return findDtos(service.findByConsultationRef(ref));
+    }
+
     @Operation(summary = "Finds an optimized list of all fichePatients")
     @GetMapping("optimized")
     public ResponseEntity<List<FichePatientDto>> findAllOptimized() throws Exception {

@@ -22,6 +22,7 @@ import {RadiologieDto} from "../../shared/model/dossie/Radiologie.model";
 import {FichePatientDto} from "../../shared/model/dossie/FichePatient.model";
 import {SyntheseMedicaleDto} from "../../shared/model/rappor/SyntheseMedicale.model";
 import {DiagnosticDto} from "../../shared/model/rappor/Diagnostic.model";
+import {ChartModule} from "primeng/chart";
 
 @Component({
     selector: 'app-dossier',
@@ -39,21 +40,127 @@ import {DiagnosticDto} from "../../shared/model/rappor/Diagnostic.model";
         RippleModule,
         ToolbarModule,
         DatePipe,
-        NgStyle
+        NgStyle,
+        ChartModule
     ],
     templateUrl: './dossier.component.html',
     styleUrls:['/dossier.component.css']
 })
 export class DossierComponent implements OnInit {
+    data: any;
+    options: any;
     array = new Array<PatientDto>(this.actualPationt)
     private _activeTab = 0;
     showConsultationDetails: boolean = false;
+    documentStyle = getComputedStyle(document.documentElement);
+    textColor = this.documentStyle.getPropertyValue('--text-color');
+    textColorSecondary = this.documentStyle.getPropertyValue('--text-color-secondary');
+    surfaceBorder = this.documentStyle.getPropertyValue('--surface-border');
+
 
     constructor(private service:DossierService) {
+
     }
 
     ngOnInit(): void {
+       this.loadChart();
+        this.data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+                {
+                    label: "Bilan d'annalyses : ",
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    fill: false,
+                    borderDash: [5, 5],
+                    tension: 0.4,
+                    borderColor: this.documentStyle.getPropertyValue('--teal-500')
+                }
+            ]
+        };
 
+        this.options = {
+            maintainAspectRatio: false,
+            aspectRatio: 0.6,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: this.textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: this.textColorSecondary
+                    },
+                    grid: {
+                        color: this.surfaceBorder
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: this.textColorSecondary
+                    },
+                    grid: {
+                        color: this.surfaceBorder
+                    }
+                }
+            }
+        };
+    }
+
+    loadChart() {
+        this.data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+                {
+                    label: 'First Dataset',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    borderColor: this.documentStyle.getPropertyValue('--blue-500'),
+                    tension: 0.4
+                },
+                {
+                    label: 'Second Dataset',
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    fill: false,
+                    borderColor: this.documentStyle.getPropertyValue('--pink-500'),
+                    tension: 0.4
+                }
+            ]
+        };
+
+        this.options = {
+            maintainAspectRatio: false,
+            aspectRatio: 0.6,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: this.textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: this.textColorSecondary
+                    },
+                    grid: {
+                        color: this.surfaceBorder,
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: this.textColorSecondary
+                    },
+                    grid: {
+                        color: this.surfaceBorder,
+                        drawBorder: false
+                    }
+                }
+            }
+        };
     }
     get showDossierDetails(): boolean {
         return this.service.showDossierDetails;

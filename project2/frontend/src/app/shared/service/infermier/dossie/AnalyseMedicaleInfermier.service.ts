@@ -65,6 +65,10 @@ export class AnalyseMedicaleInfermierService {
         return this.http.post<AnalyseMedicaleDto>(this.API, this.item);
     }
 
+    findByConsultationRef(ref: string) {
+        return this.http.get<Array<AnalyseMedicaleDto>>('http://localhost:8036/api/infermier/analyseMedicale/consultation/num/'+ref)
+    }
+
     public delete(dto: AnalyseMedicaleDto) {
         return this.http.delete<number>(this.API + 'id/' + dto.id);
     }

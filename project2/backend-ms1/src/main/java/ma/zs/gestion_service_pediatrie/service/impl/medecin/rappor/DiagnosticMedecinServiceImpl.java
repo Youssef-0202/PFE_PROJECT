@@ -123,6 +123,7 @@ public class DiagnosticMedecinServiceImpl implements DiagnosticMedecinService {
     public List<Diagnostic> findByConsultationId(Long id){
         return dao.findByConsultationId(id);
     }
+    @Transactional
     public int deleteByConsultationId(Long id){
         return dao.deleteByConsultationId(id);
     }

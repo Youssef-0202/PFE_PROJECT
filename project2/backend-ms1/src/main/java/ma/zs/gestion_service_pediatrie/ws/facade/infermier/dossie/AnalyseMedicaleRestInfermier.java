@@ -39,7 +39,11 @@ import ma.zs.gestion_service_pediatrie.zynerator.dto.FileTempDto;
 public class AnalyseMedicaleRestInfermier {
 
 
-
+    @Operation(summary = "find by num dossier")
+    @GetMapping("consultation/num/{ref}")
+    public List<AnalyseMedicaleDto> findByConsultationref(@PathVariable String ref){
+        return findDtos(service.findByConsultationRef(ref));
+    }
 
     @Operation(summary = "Finds a list of all analyseMedicales")
     @GetMapping("")

@@ -55,6 +55,12 @@ public class DiagnosticRestInfermier {
         return res;
     }
 
+    @Operation(summary = "find by num dossier")
+    @GetMapping("dossier/num/{num}")
+    public List<DiagnosticDto> findByDossierNum(@PathVariable String num){
+        return findDtos(service.findByNumDossier(num));
+    }
+
     @Operation(summary = "Finds an optimized list of all diagnostics")
     @GetMapping("optimized")
     public ResponseEntity<List<DiagnosticDto>> findAllOptimized() throws Exception {

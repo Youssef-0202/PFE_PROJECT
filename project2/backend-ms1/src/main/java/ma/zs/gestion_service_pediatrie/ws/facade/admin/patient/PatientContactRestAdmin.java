@@ -38,9 +38,6 @@ import ma.zs.gestion_service_pediatrie.zynerator.dto.FileTempDto;
 @RequestMapping("/api/admin/patientContact/")
 public class PatientContactRestAdmin {
 
-
-
-
     @Operation(summary = "Finds a list of all patientContacts")
     @GetMapping("")
     public ResponseEntity<List<PatientContactDto>> findAll() throws Exception {
@@ -141,6 +138,8 @@ public class PatientContactRestAdmin {
         res = new ResponseEntity<>(dtos, status);
         return res;
     }
+
+
     @Operation(summary = "Delete the specified patientContact")
     @DeleteMapping("")
     public ResponseEntity<PatientContactDto> delete(@RequestBody PatientContactDto dto) throws Exception {

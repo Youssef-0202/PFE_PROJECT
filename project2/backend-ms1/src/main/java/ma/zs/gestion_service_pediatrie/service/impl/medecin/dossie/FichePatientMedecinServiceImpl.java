@@ -138,6 +138,7 @@ public class FichePatientMedecinServiceImpl implements FichePatientMedecinServic
     public List<FichePatient> findByConsultationId(Long id){
         return dao.findByConsultationId(id);
     }
+    @Transactional
     public int deleteByConsultationId(Long id){
         return dao.deleteByConsultationId(id);
     }

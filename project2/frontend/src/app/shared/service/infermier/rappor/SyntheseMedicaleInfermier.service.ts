@@ -101,6 +101,11 @@ export class SyntheseMedicaleInfermierService {
         return this.http.post<Array<SyntheseMedicaleDto>>(this.API + 'import-excel', formData);
     }
 
+    findByPationNumDossier(num: string) {
+        return this.http.get<Array<SyntheseMedicaleDto>>('http://localhost:8036/api/infermier/syntheseMedicale/dossier/num/'+num)
+
+    }
+
 
 
     public format(myDate: Date): Date {

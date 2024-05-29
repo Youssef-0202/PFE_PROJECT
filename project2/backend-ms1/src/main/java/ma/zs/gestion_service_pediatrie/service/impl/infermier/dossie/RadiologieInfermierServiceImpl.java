@@ -27,7 +27,10 @@ import ma.zs.gestion_service_pediatrie.service.facade.infermier.dossie.TypeImage
 
 @Service
 public class RadiologieInfermierServiceImpl implements RadiologieInfermierService {
-
+    @Override
+    public List<Radiologie> findByConsultationRef(String ref) {
+        return dao.findByConsultationRef(ref);
+    }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
     public Radiologie update(Radiologie t) {

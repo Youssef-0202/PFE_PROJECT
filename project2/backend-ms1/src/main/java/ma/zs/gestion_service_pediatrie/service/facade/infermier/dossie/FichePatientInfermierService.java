@@ -24,6 +24,8 @@ public interface FichePatientInfermierService {
 
 	FichePatient create(FichePatient t);
 
+    List<FichePatient> findByConsultationRef(String ref);
+
     FichePatient update(FichePatient t);
 
     List<FichePatient> update(List<FichePatient> ts,boolean createIfNotExist);

@@ -117,7 +117,7 @@
                     [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
                 <ng-template pTemplate="caption">
                     <div class="flex flex-column flex-row justify-content-between table-header">
-                        <h5 class="p-m-0">{{'infermier.header' | translate}} :</h5>
+                        <h5 class="p-m-0">{{'infirmier' | translate}} :</h5>
                         <span class="p-input-icon-left ml-auto">
                             <i class="pi pi-search"></i>
                             <input pInputText type="text" placeholder="{{'' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
@@ -240,7 +240,7 @@
                 <ng-template pTemplate="summary">
                     <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
                     <div class="p-d-flex p-ai-center p-jc-between mt-4">
-                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'infermier' : 'infermiers' : 0 }}.
+                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'infirmier' : 'infi rmiers' : 0 }}.
                     </div>
                 </ng-template>
             </p-table>

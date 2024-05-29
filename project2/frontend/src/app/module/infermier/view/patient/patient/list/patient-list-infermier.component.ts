@@ -29,6 +29,13 @@ import {RelationDto} from 'src/app/shared/model/patient/Relation.model';
 import {RelationInfermierService} from 'src/app/shared/service/infermier/patient/RelationInfermier.service';
 import {SexeDto} from 'src/app/shared/model/commun/Sexe.model';
 import {SexeInfermierService} from 'src/app/shared/service/infermier/commun/SexeInfermier.service';
+import {ConsultationDto} from "../../../../../../shared/model/consultatio/Consultation.model";
+import {
+    ConsultationMedecinService
+} from "../../../../../../shared/service/medecin/consultatio/ConsultationMedecin.service";
+import {
+    ConsultationInfermierService
+} from "../../../../../../shared/service/infermier/consultatio/ConsultationInfermier.service";
 
 
 @Component({
@@ -63,7 +70,7 @@ export class PatientListInfermierComponent implements OnInit {
     sexes: Array<SexeDto>;
 
 
-    constructor( private service: PatientInfermierService  , private patientContactService: PatientContactInfermierService, private relationService: RelationInfermierService, private sexeService: SexeInfermierService, @Inject(PLATFORM_ID) private platformId?) {
+    constructor(private consultationInfermierService :ConsultationInfermierService,private service: PatientInfermierService  , private patientContactService: PatientContactInfermierService, private relationService: RelationInfermierService, private sexeService: SexeInfermierService, @Inject(PLATFORM_ID) private platformId?) {
         this.datePipe = ServiceLocator.injector.get(DatePipe);
         this.messageService = ServiceLocator.injector.get(MessageService);
         this.confirmationService = ServiceLocator.injector.get(ConfirmationService);
@@ -323,9 +330,16 @@ export class PatientListInfermierComponent implements OnInit {
         }];
       }
 
-    showListConsultation(){
-        this.router.navigateByUrl('/app/infermier/patient/patient/consultation')
+    showListConsultation(numDossier: any){
+        this.patientsConsultation=this.consultationInfermierService.items.filter(e=>{
+            return e.patient!.numDossier==numDossier;
+        })
+        console.log(this.consultationInfermierService.items)
+        console.log(this.patientsConsultation)
+        this.router.navigateByUrl('/app/infermier/patient/patient/consultations')
     }
+
+
 
 
 
@@ -510,5 +524,13 @@ export class PatientListInfermierComponent implements OnInit {
 
     set entityName(value: string) {
         this.service.entityName = value;
+    }
+
+    get patientsConsultation(): Array<ConsultationDto> {
+        return this.service.patientsConsultation;
+    }
+
+    set patientsConsultation(value: Array<ConsultationDto>) {
+        this.service.patientsConsultation = value;
     }
 }

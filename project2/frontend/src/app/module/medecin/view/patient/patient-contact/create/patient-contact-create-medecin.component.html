@@ -26,7 +26,7 @@
                                                     <label for="3">{{'patientContact.nom' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.nom' | translate}}" id="3" [(ngModel)]="item.nom"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -35,7 +35,7 @@
                                                     <label for="4">{{'patientContact.prenom' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.prenom' | translate}}" id="4" [(ngModel)]="item.prenom"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -44,7 +44,7 @@
                                                     <label for="5">{{'patientContact.telephone' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.telephone' | translate}}" id="5" [(ngModel)]="item.telephone"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -53,7 +53,7 @@
                                                     <label for="6">{{'patientContact.adresse' | translate}}</label>
                                                     <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.adresse' | translate}}" id="6" [(ngModel)]="item.adresse"
                                                              />
-                                                    
+
                                                 </div>
 
 
@@ -61,9 +61,9 @@
                                             <div class="field col-11 md:col-6">
                                                 <label for="7">{{'patientContact.relation' | translate}}</label>
                                                 <p-dropdown  appendTo="body"  [options]="relations" [(ngModel)]="item.relation" id="7" [filter]="true" filterMatchMode="contains"
-                                                        [showClear]="true" optionLabel="ref" placeholder="{{'patientContact.relation' | translate}}"  >
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'patientContact.relation' | translate}}"  >
                                                 </p-dropdown>
-                                                
+
                                             </div>
 
                                             <div class="field col-11 md:col-6">
@@ -71,7 +71,7 @@
                                                 <p-dropdown  appendTo="body"  [options]="patients" [(ngModel)]="item.patient" id="8" [filter]="true" filterMatchMode="contains"
                                                         [showClear]="true" optionLabel="numDossier" placeholder="{{'patientContact.patient' | translate}}"  >
                                                 </p-dropdown>
-                                                
+
                                             </div>
 
                                 </div>

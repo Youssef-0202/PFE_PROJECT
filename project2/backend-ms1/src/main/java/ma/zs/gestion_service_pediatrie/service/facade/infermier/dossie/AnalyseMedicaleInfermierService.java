@@ -24,6 +24,8 @@ public interface AnalyseMedicaleInfermierService {
 
 	AnalyseMedicale create(AnalyseMedicale t);
 
+    List<AnalyseMedicale> findByConsultationRef(String ref);
+
     AnalyseMedicale update(AnalyseMedicale t);
 
     List<AnalyseMedicale> update(List<AnalyseMedicale> ts,boolean createIfNotExist);

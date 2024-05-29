@@ -57,6 +57,8 @@ export class RadiologieInfermierService {
         return this.http.get<Array<RadiologieDto>>(this.API + 'optimized');
     }
 
+
+
     public findPaginatedByCriteria(criteria: RadiologieCriteria): Observable<PaginatedList<RadiologieDto>> {
         return this.http.post<PaginatedList<RadiologieDto>>(this.API + 'find-paginated-by-criteria', criteria);
     }

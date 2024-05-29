@@ -6,6 +6,7 @@ import ma.zs.gestion_service_pediatrie.dao.criteria.core.rappor.SyntheseMedicale
 import ma.zs.gestion_service_pediatrie.zynerator.service.IService;
 
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface SyntheseMedicaleInfermierService {
@@ -20,6 +21,9 @@ public interface SyntheseMedicaleInfermierService {
 
 
 	SyntheseMedicale create(SyntheseMedicale t);
+
+    @Query("SELECT a.syntheseMedicale FROM Consultation a WHERE a.patient.numDossier = :nom")
+    List<SyntheseMedicale> findByNumDossier(String nom);
 
     SyntheseMedicale update(SyntheseMedicale t);
 

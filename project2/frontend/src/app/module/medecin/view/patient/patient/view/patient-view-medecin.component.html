@@ -26,7 +26,7 @@
                     </div>
                     <div class="field col-12 md:col-6">
                         <label for="6">{{'patient.sexe' | translate}}</label>
-                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patient.sexe' | translate}}" autofocus  id="6" [ngModel]="item.sexe?.ref">
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patient.sexe' | translate}}" autofocus  id="6" [ngModel]="item.sexe?.libelle">
                     </div>
                 </div>
             </p-tabPanel>
@@ -55,7 +55,7 @@
                                         <td>{{p.prenom}}</td>
                                         <td>{{p.telephone}}</td>
                                         <td>{{p.adresse}}</td>
-                                        <td>{{p.relation?.ref}}</td>
+                                        <td>{{p.relation?.libelle}}</td>
                                     </tr>
                                 </ng-template>
                             </p-table>

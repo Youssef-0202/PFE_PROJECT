@@ -93,6 +93,13 @@ public class RadiologieRestInfermier {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
+
+    @Operation(summary = "find by num dossier")
+    @GetMapping("consultation/num/{ref}")
+    public List<RadiologieDto> findByConsultationref(@PathVariable String ref){
+        return findDtos(service.findByConsultationRef(ref));
+    }
+
     @Operation(summary = "Saves the specified  radiologie")
     @PostMapping("")
     public ResponseEntity<RadiologieDto> save(@RequestBody RadiologieDto dto) throws Exception {

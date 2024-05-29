@@ -20,7 +20,10 @@ import {AuthGuard} from 'src/app/zynerator/security/guards/auth.guard';
 import { PatientContactListInfermierComponent } from './patient-contact/list/patient-contact-list-infermier.component';
 import { RelationListInfermierComponent } from './relation/list/relation-list-infermier.component';
 import { PatientListInfermierComponent } from './patient/list/patient-list-infermier.component';
-import {PatientConsultationInfermier} from "./patient/patientConsultation/patient-consultation-infermier";
+import {PatientConsultationInfermier} from "./patient/patientConsultation/list/patient-consultation-infermier";
+import {
+    PatientConsultationViewInfermierComponent
+} from "./patient/patientConsultation/view/patient-consultation-view-infermier.component";
 @NgModule({
     imports: [
         RouterModule.forChild(
@@ -121,8 +124,13 @@ import {PatientConsultationInfermier} from "./patient/patientConsultation/patien
                                     canActivate: [AuthGuard]
                                 },
                                 {
-                                    path: 'consultation',
+                                    path: 'consultations',
                                     component: PatientConsultationInfermier ,
+                                    canActivate: [AuthGuard]
+                                },
+                                {
+                                    path: 'consultation',
+                                    component: PatientConsultationViewInfermierComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
