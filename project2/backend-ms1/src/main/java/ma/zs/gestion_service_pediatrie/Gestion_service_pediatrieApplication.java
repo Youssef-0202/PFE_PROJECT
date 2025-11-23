@@ -79,7 +79,7 @@ public class Gestion_service_pediatrieApplication {
 
 
         
-
+    
 		// User Admin
 		User userForAdmin = new User("admin");
 		userForAdmin.setPassword("123");
