@@ -1,94 +1,219 @@
-<div class="layout-topbar " [ngStyle]="background()" >
-    <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/images/chu-logo4.png" width="100px" alt="logo">
-        <span>CHU Mohammed VI</span>
-    </a>
-
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-        <i class="pi pi-bars"></i>
-    </button>
-
-    <div *ngIf="roleAdmin" class="layout-topbar-logo " style="margin:25px;cursor:pointer"  (click)="spanClick()">
-        <span>Admin Dashbord</span>
-    </div>
-    <div *ngIf="roleInfermier" class="layout-topbar-logo " style="margin:25px;cursor:pointer"  (click)="spanClick()">
-        <span> Infirmier Dashbord</span>
-    </div>
-    <div *ngIf="roleMedecin" class="layout-topbar-logo " style="margin:25px;cursor:pointer"  (click)="spanClick()">
-        <span> Medecin Dashbord</span>
-    </div>
-
-    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
-        <i class="pi pi-ellipsis-v"></i>
-    </button>
-
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-
-        <button  class="p-link layout-topbar-button" (click)="showProfilRouter()" > <!--(click)="edit(authenticatedUser)"-->
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
+<div class="modern-topbar" [ngClass]="getTopbarClass()">
+    <!-- Left Section: Logo & Brand -->
+    <div class="topbar-left">
+        <button 
+            #menubutton 
+            class="menu-toggle-btn" 
+            (click)="layoutService.onMenuToggle()"
+            pTooltip="Menu" 
+            tooltipPosition="bottom">
+            <i class="pi pi-bars"></i>
         </button>
 
-        <button class="p-link layout-topbar-button"  (click)="logout()">
-        <i class="pi pi-fw pi-sign-in"></i>
-        <span >signOut</span>
-    </button>
+        <a class="brand-section" routerLink="" (click)="navigateToDashboard()">
+            <div class="logo-container">
+                <img src="assets/images/chu-logo4.png" alt="CHU Logo" class="logo-img">
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">CHU Mohammed VI</span>
+                <span class="brand-subtitle">{{ getDashboardTitle() }}</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Center Section: Dashboard Title with Role Badge -->
+    <div class="topbar-center">
+        <div class="dashboard-badge" [ngClass]="getRoleBadgeClass()">
+            <i [class]="getRoleIcon()"></i>
+            <span>{{ getDashboardTitle() }}</span>
+        </div>
+    </div>
+
+    <!-- Right Section: Actions -->
+    <div class="topbar-right">
+        <!-- Language Selector -->
+        <div class="action-item language-selector">
+            <p-dropdown 
+                [(ngModel)]="selectedLanguage" 
+                [options]="languageOptions" 
+                optionLabel="label"
+                optionValue="value"
+                (onChange)="changeLanguage($event.value)"
+                [style]="{'min-width':'120px'}"
+                placeholder="Langue">
+                <ng-template let-lang pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2">
+                        <i class="pi pi-globe"></i>
+                        <span>{{ lang.label }}</span>
+                    </div>
+                </ng-template>
+                <ng-template let-lang pTemplate="item">
+                    <div class="flex align-items-center gap-2">
+                        <span>{{ lang.label }}</span>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <!-- Notifications -->
+        <button 
+            class="action-btn notification-btn" 
+            pTooltip="Notifications" 
+            tooltipPosition="bottom">
+            <i class="pi pi-bell" pBadge [value]="notificationCount" severity="danger"></i>
+        </button>  
+
+        <!-- User Profile Menu -->
+        <div class="user-profile-section">
+            <button 
+                #profileMenuBtn
+                class="profile-btn" 
+                (click)="profileMenu.toggle($event)"
+                pTooltip="Mon Profil" 
+                tooltipPosition="bottom">
+                <div class="avatar-container">
+                    <img 
+                        [src]="getUserAvatar()" 
+                        alt="Profile" 
+                        class="avatar-img"
+                        *ngIf="getUserAvatar(); else avatarPlaceholder">
+                    <ng-template #avatarPlaceholder>
+                        <div class="avatar-placeholder" [ngClass]="getRoleBadgeClass()">
+                            {{ getUserInitials() }}
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">{{ authenticatedUser?.username || 'Utilisateur' }}</span>
+                    <span class="user-role">{{ getRoleLabel() }}</span>
+                </div>
+                <i class="pi pi-chevron-down"></i>
+            </button>
+
+            <!-- Profile Menu -->
+            <p-menu 
+                #profileMenu 
+                [model]="profileMenuItems" 
+                [popup]="true"
+                styleClass="profile-menu">
+            </p-menu>
+        </div>
     </div>
 </div>
-<p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="Edit profil"
-          [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+<!-- Edit Profile Dialog (Amélioré) -->
+<p-dialog 
+    [(visible)]="editDialog" 
+    [style]="{width: '600px'}" 
+    header="Modifier mon profil"
+    [modal]="true" 
+    [draggable]="false" 
+    [resizable]="false"
+    styleClass="modern-dialog">
+    
     <ng-template pTemplate="content">
-        <p-tabView>
-            <p-tabPanel header="{{'user.tabPan' | translate}}">
-                <div class="grid">
+        <div class="dialog-content">
+            <p-tabView>
+                <p-tabPanel header="Informations personnelles">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="username">
+                                <i class="pi pi-user"></i>
+                                Nom d'utilisateur
+                            </label>
+                            <input 
+                                id="username"
+                                type="text" 
+                                pInputText
+                                [(ngModel)]="item.username"
+                                placeholder="Votre nom d'utilisateur"
+                                class="w-full" />
+                        </div>
 
-                    <div class="field col-12 md:col-6">
-                        <label for="3">{{'user.email' | translate}}</label>
-                        <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.email' | translate}}" id="3" [(ngModel)]="item.email"
-                        />
-
+                        <div class="form-field">
+                            <label for="email">
+                                <i class="pi pi-envelope"></i>
+                                Email
+                            </label>
+                            <input 
+                                id="email"
+                                type="email" 
+                                pInputText
+                                [(ngModel)]="item.email"
+                                placeholder="votre.email@chu.ma"
+                                class="w-full" />
+                        </div>
                     </div>
+                </p-tabPanel>
 
-                    <div class="field col-12 md:col-6">
-                        <label for="6">{{'user.username' | translate}}</label>
-                        <input class="mb-2 mr-2" type="text" pInputText
-                               placeholder="{{'user.username' | translate}}" id="6" [(ngModel)]="item.username"
-                        />
+                <p-tabPanel header="Sécurité">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="currentPassword">
+                                <i class="pi pi-lock"></i>
+                                Mot de passe actuel
+                            </label>
+                            <p-password 
+                                id="currentPassword"
+                                [(ngModel)]="currentPassword"
+                                [toggleMask]="true"
+                                placeholder="••••••••"
+                                styleClass="w-full"
+                                [feedback]="false">
+                            </p-password>
+                        </div>
 
+                        <div class="form-field">
+                            <label for="newPassword">
+                                <i class="pi pi-lock"></i>
+                                Nouveau mot de passe
+                            </label>
+                            <p-password 
+                                id="newPassword"
+                                [(ngModel)]="item.password"
+                                [toggleMask]="true"
+                                placeholder="••••••••"
+                                styleClass="w-full"
+                                [feedback]="true">
+                            </p-password>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="confirmPassword">
+                                <i class="pi pi-check-circle"></i>
+                                Confirmer le mot de passe
+                            </label>
+                            <p-password 
+                                id="confirmPassword"
+                                [(ngModel)]="confirmPassword"
+                                [toggleMask]="true"
+                                placeholder="••••••••"
+                                styleClass="w-full"
+                                [feedback]="false">
+                            </p-password>
+                        </div>
                     </div>
-
-                </div>
-            </p-tabPanel>
-            <p-tabPanel header="{{'user.password' | translate}}">
-                <div class="grid">
-
-                    <div class="field col-12 md:col-6">
-                        <label for="7">{{'user.password' | translate}}</label>
-                        <input class="mb-2 mr-2" type="text" pPassword
-                               placeholder="{{'user.password' | translate}}" id="7" [(ngModel)]="item.password"
-                        />
-
-                    </div>
-
-                    <div class="field col-12 md:col-6">
-                        <label for="7">{{'user.password' | translate}}</label>
-                        <input class="mb-2 mr-2" type="text" pPassword
-                               placeholder="{{'user.password' | translate}}" id="8" [(ngModel)]="item.password"
-                        />
-
-                    </div>
-                </div>
-            </p-tabPanel>
-        </p-tabView>
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <div class="p-flexbox">
-            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined"
-                    (click)="hideEditDialog()"></button>
-            <button pButton pRipple label="Valider" icon="pi pi-check"
-                    (click)="editUser()"></button>
+                </p-tabPanel>
+            </p-tabView>
         </div>
     </ng-template>
 
+    <ng-template pTemplate="footer">
+        <div class="dialog-footer">
+            <button 
+                pButton 
+                label="Annuler" 
+                icon="pi pi-times" 
+                class="p-button-text p-button-secondary"
+                (click)="hideEditDialog()">
+            </button>
+            <button 
+                pButton 
+                label="Enregistrer" 
+                icon="pi pi-check" 
+                class="p-button-primary"
+                (click)="editUser()">
+            </button>
+        </div>
+    </ng-template>
 </p-dialog>

@@ -1,0 +1,432 @@
+$admin-primary: #6366f1;
+$admin-light: #e0e7ff;
+$medecin-primary: #3b82f6;
+$medecin-light: #dbeafe;
+$infermier-primary: #ec4899;
+$infermier-light: #fce7f3;
+
+// Top Bar Container
+.modern-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: all 0.3s ease;
+
+    // Role-specific colors
+    &.role-admin {
+        border-bottom-color: $admin-primary;
+        border-bottom-width: 3px;
+    }
+
+    &.role-medecin {
+        border-bottom-color: $medecin-primary;
+        border-bottom-width: 3px;
+    }
+
+    &.role-infermier {
+        border-bottom-color: $infermier-primary;
+        border-bottom-width: 3px;
+    }
+}
+
+// Left Section
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+
+    .menu-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: #f3f4f6;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #e5e7eb;
+            transform: scale(1.05);
+        }
+
+        i {
+            font-size: 1.25rem;
+            color: #374151;
+        }
+    }
+
+    .brand-section {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #f9fafb;
+        }
+
+        .logo-container {
+            .logo-img {
+                width: 45px;
+                height: 45px;
+                object-fit: contain;
+            }
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+
+            .brand-name {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #111827;
+                line-height: 1.2;
+            }
+
+            .brand-subtitle {
+                font-size: 0.75rem;
+                color: #6b7280;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// Center Section
+.topbar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    .dashboard-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+        &.badge-admin {
+            background: $admin-light;
+            color: $admin-primary;
+        }
+
+        &.badge-medecin {
+            background: $medecin-light;
+            color: $medecin-primary;
+        }
+
+        &.badge-infermier {
+            background: $infermier-light;
+            color: $infermier-primary;
+        }
+
+        i {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+// Right Section
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    justify-content: flex-end;
+
+    .action-item {
+        &.language-selector {
+            ::ng-deep .p-dropdown {
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                
+                &:hover {
+                    border-color: #d1d5db;
+                }
+            }
+        }
+    }
+
+    .action-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: #f3f4f6;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #e5e7eb;
+            transform: scale(1.05);
+        }
+
+        i {
+            font-size: 1.1rem;
+            color: #374151;
+        }
+
+        &.notification-btn {
+            ::ng-deep .p-badge {
+                min-width: 1.2rem;
+                height: 1.2rem;
+                line-height: 1.2rem;
+                font-size: 0.7rem;
+            }
+        }
+    }
+
+    .user-profile-section {
+        .profile-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 1rem 0.4rem 0.4rem;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: #f9fafb;
+                border-color: #d1d5db;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .avatar-container {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                .avatar-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .avatar-placeholder {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    color: #ffffff;
+
+                    &.badge-admin {
+                        background: linear-gradient(135deg, $admin-primary 0%, lighten($admin-primary, 10%) 100%);
+                    }
+
+                    &.badge-medecin {
+                        background: linear-gradient(135deg, $medecin-primary 0%, lighten($medecin-primary, 10%) 100%);
+                    }
+
+                    &.badge-infermier {
+                        background: linear-gradient(135deg, $infermier-primary 0%, lighten($infermier-primary, 10%) 100%);
+                    }
+                }
+            }
+
+            .user-info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .user-name {
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    color: #111827;
+                    line-height: 1.2;
+                }
+
+                .user-role {
+                    font-size: 0.75rem;
+                    color: #6b7280;
+                    font-weight: 500;
+                }
+            }
+
+            i.pi-chevron-down {
+                font-size: 0.75rem;
+                color: #9ca3af;
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+}
+
+// Profile Menu Customization
+::ng-deep .profile-menu {
+    margin-top: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+
+    .p-menuitem-link {
+        padding: 0.75rem 1rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #f3f4f6;
+        }
+
+        .p-menuitem-icon {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .p-menuitem-text {
+            color: #374151;
+            font-weight: 500;
+        }
+    }
+
+    .logout-item {
+        .p-menuitem-link {
+            color: #ef4444 !important;
+
+            .p-menuitem-icon {
+                color: #ef4444 !important;
+            }
+
+            &:hover {
+                background: #fee2e2;
+            }
+        }
+    }
+}
+
+// Modern Dialog Styling
+::ng-deep .modern-dialog {
+    border-radius: 16px;
+    overflow: hidden;
+
+    .p-dialog-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff;
+        padding: 1.5rem;
+        border-bottom: none;
+
+        .p-dialog-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+    }
+
+    .dialog-content {
+        padding: 1.5rem;
+
+        .form-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 600;
+                color: #374151;
+                font-size: 0.9rem;
+
+                i {
+                    color: #6366f1;
+                }
+            }
+
+            input, .p-password {
+                width: 100%;
+            }
+        }
+    }
+
+    .dialog-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: #f9fafb;
+        border-top: 1px solid #e5e7eb;
+    }
+}
+
+.notification-btn {
+    position: relative;
+    
+    .notification-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: #ef4444;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 600;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .topbar-center {
+        display: none;
+    }
+
+    .topbar-left {
+        .brand-text {
+            .brand-subtitle {
+                display: none;
+            }
+        }
+    }
+
+    .topbar-right {
+        .user-info {
+            display: none;
+        }
+
+        .action-item.language-selector {
+            display: none;
+        }
+    }
+}
