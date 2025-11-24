@@ -1,0 +1,80 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ma.zs:gestion_service_pediatrie:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-web:jar -> duplicate declaration of version (?) @ line 81, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< ma.zs:gestion_service_pediatrie >-------------------
+[INFO] Building gestion_service_pediatrie 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.2.0:clean (default-clean) @ gestion_service_pediatrie ---
+[INFO] Deleting C:\Users\HP\OneDrive\Bureau\PFE_PROJECT\project2\backend-ms1\target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ gestion_service_pediatrie ---
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] Copying 59 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ gestion_service_pediatrie ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 479 source files with javac [debug release 17] to target\classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/main/java/ma/zs/gestion_service_pediatrie/zynerator/bean/EntityIdResolver.java: C:\Users\HP\OneDrive\Bureau\PFE_PROJECT\project2\backend-ms1\src\main\java\ma\zs\gestion_service_pediatrie\zynerator\bean\EntityIdResolver.java uses or overrides a deprecated API.
+[INFO] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/main/java/ma/zs/gestion_service_pediatrie/zynerator/bean/EntityIdResolver.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/main/java/ma/zs/gestion_service_pediatrie/service/impl/infermier/commun/MedecinInfermierServiceImpl.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/main/java/ma/zs/gestion_service_pediatrie/service/impl/infermier/commun/MedecinInfermierServiceImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ gestion_service_pediatrie ---
+[INFO] Copying 3 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:testCompile (default-testCompile) @ gestion_service_pediatrie ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 21 source files with javac [debug release 17] to target\test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/patient/patient_contact/PatientContactIntegrationTest.java:[1,73] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/groupe_sanguin/GroupeSanguinIntegrationTest.java:[1,71] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/analyse_medicale/AnalyseMedicaleIntegrationTest.java:[1,72] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/fiche_patient/FichePatientIntegrationTest.java:[1,70] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/rappor/synthese_medicale/SyntheseMedicaleIntegrationTest.java:[1,73] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/type_image/TypeImageIntegrationTest.java:[1,69] ';' expected
+[INFO] 6 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.062 s
+[INFO] Finished at: 2025-11-23T20:32:24+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project gestion_service_pediatrie: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/patient/patient_contact/PatientContactIntegrationTest.java:[1,73] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/groupe_sanguin/GroupeSanguinIntegrationTest.java:[1,71] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/analyse_medicale/AnalyseMedicaleIntegrationTest.java:[1,72] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/fiche_patient/FichePatientIntegrationTest.java:[1,70] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/rappor/synthese_medicale/SyntheseMedicaleIntegrationTest.java:[1,73] ';' expected
+[ERROR] /C:/Users/HP/OneDrive/Bureau/PFE_PROJECT/project2/backend-ms1/src/test/java/ma/zs/gestion_service_pediatrie/integration/core/dossie/type_image/TypeImageIntegrationTest.java:[1,69] ';' expected
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

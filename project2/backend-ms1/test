@@ -1,0 +1,294 @@
+-- SEXE
+INSERT INTO sexe (id, libelle, ref) VALUES
+(1, 'Masculin', 'SEX001'),
+(2, 'Féminin', 'SEX002'),
+(3, 'Autre', 'SEX003'),
+(4, 'Non spécifié', 'SEX004'),
+(5, 'Homme', 'SEX005'),
+(6, 'Femme', 'SEX006'),
+(7, 'M', 'SEX007'),
+(8, 'F', 'SEX008'),
+(9, 'Intersexe', 'SEX009'),
+(10, 'Préfère ne pas dire', 'SEX010');
+
+-- GROUPE_SANGUIN
+INSERT INTO groupe_sanguin (id, libelle, ref) VALUES
+(1, 'A+', 'GS001'),
+(2, 'A-', 'GS002'),
+(3, 'B+', 'GS003'),
+(4, 'B-', 'GS004'),
+(5, 'AB+', 'GS005'),
+(6, 'AB-', 'GS006'),
+(7, 'O+', 'GS007'),
+(8, 'O-', 'GS008'),
+(9, 'Non déterminé', 'GS009'),
+(10, 'En attente', 'GS010');
+
+-- RELATION
+INSERT INTO relation (id, libelle, ref) VALUES
+(1, 'Père', 'REL001'),
+(2, 'Mère', 'REL002'),
+(3, 'Conjoint(e)', 'REL003'),
+(4, 'Frère', 'REL004'),
+(5, 'Sœur', 'REL005'),
+(6, 'Enfant', 'REL006'),
+(7, 'Ami(e)', 'REL007'),
+(8, 'Tuteur légal', 'REL008'),
+(9, 'Voisin(e)', 'REL009'),
+(10, 'Autre membre famille', 'REL010');
+
+-- TYPE_IMAGE
+INSERT INTO type_image (id, libelle, ref) VALUES
+(1, 'Radio thorax', 'TI001'),
+(2, 'IRM cérébrale', 'TI002'),
+(3, 'Scanner abdominal', 'TI003'),
+(4, 'Échographie', 'TI004'),
+(5, 'Radio membre inférieur', 'TI005'),
+(6, 'Mammographie', 'TI006'),
+(7, 'Radio dentaire', 'TI007'),
+(8, 'Scanner thoracique', 'TI008'),
+(9, 'IRM rachis', 'TI009'),
+(10, 'Doppler vasculaire', 'TI010');
+
+-- EPREUVE
+INSERT INTO epreuve (id, libelle, ref) VALUES
+(1, 'Glycémie', 'EPR001'),
+(2, 'Hémoglobine', 'EPR002'),
+(3, 'Cholestérol total', 'EPR003'),
+(4, 'Créatinine', 'EPR004'),
+(5, 'TSH', 'EPR005'),
+(6, 'Leucocytes', 'EPR006'),
+(7, 'Plaquettes', 'EPR007'),
+(8, 'Urée', 'EPR008'),
+(9, 'Transaminases', 'EPR009'),
+(10, 'CRP', 'EPR010');
+
+-- ETABLISSEMENT
+INSERT INTO etablissement (id, code, libelle, createdon, createdby) VALUES
+(1, 'ETB001', 'Hôpital Ibn Sina', NOW(), 'admin'),
+(2, 'ETB002', 'Clinique Al Amal', NOW(), 'admin'),
+(3, 'ETB003', 'Centre Médical Atlas', NOW(), 'admin'),
+(4, 'ETB004', 'Polyclinique du Sud', NOW(), 'admin'),
+(5, 'ETB005', 'Hôpital Cheikh Zaid', NOW(), 'admin'),
+(6, 'ETB006', 'Clinique Internationale', NOW(), 'admin'),
+(7, 'ETB007', 'Centre de Santé Al Baraka', NOW(), 'admin'),
+(8, 'ETB008', 'Hôpital Mohammed V', NOW(), 'admin'),
+(9, 'ETB009', 'Clinique Yasmine', NOW(), 'admin'),
+(10, 'ETB010', 'Centre Hospitalier Universitaire', NOW(), 'admin');
+
+-- ROLE_APP
+INSERT INTO role_app (id, authority, created_at) VALUES
+(1, 'ROLE_ADMIN', NOW()),
+(2, 'ROLE_MEDECIN', NOW()),
+(3, 'ROLE_INFIRMIER', NOW()),
+(4, 'ROLE_SECRETAIRE', NOW()),
+(5, 'ROLE_PHARMACIEN', NOW()),
+(6, 'ROLE_RADIOLOGUE', NOW()),
+(7, 'ROLE_LABORANTIN', NOW()),
+(8, 'ROLE_GESTIONNAIRE', NOW()),
+(9, 'ROLE_DIRECTEUR', NOW()),
+(10, 'ROLE_USER', NOW());
+
+-- MODEL_PERMISSION
+INSERT INTO model_permission (id, libelle, reference) VALUES
+(1, 'Gestion Patients', 'PERM_PATIENT'),
+(2, 'Gestion Consultations', 'PERM_CONSULTATION'),
+(3, 'Gestion Ordonnances', 'PERM_ORDONNANCE'),
+(4, 'Gestion Analyses', 'PERM_ANALYSE'),
+(5, 'Gestion Radiologie', 'PERM_RADIO'),
+(6, 'Gestion Utilisateurs', 'PERM_USER'),
+(7, 'Gestion Certificats', 'PERM_CERTIFICAT'),
+(8, 'Gestion Traitements', 'PERM_TRAITEMENT'),
+(9, 'Gestion Diagnostics', 'PERM_DIAGNOSTIC'),
+(10, 'Gestion Rapports', 'PERM_RAPPORT');
+
+-- ACTION_PERMISSION
+INSERT INTO action_permission (id, libelle, reference) VALUES
+(1, 'Créer', 'ACTION_CREATE'),
+(2, 'Lire', 'ACTION_READ'),
+(3, 'Modifier', 'ACTION_UPDATE'),
+(4, 'Supprimer', 'ACTION_DELETE'),
+(5, 'Imprimer', 'ACTION_PRINT'),
+(6, 'Exporter', 'ACTION_EXPORT'),
+(7, 'Valider', 'ACTION_VALIDATE'),
+(8, 'Annuler', 'ACTION_CANCEL'),
+(9, 'Archiver', 'ACTION_ARCHIVE'),
+(10, 'Partager', 'ACTION_SHARE');
+
+-- USER (Médecins ET Infirmiers) - IMPORTANT: Insérer AVANT consultation
+INSERT INTO user (id, dtype, username, email, password, first_name, last_name, nom, prenom, phone, telephone, sexe, date_naissance, account_non_expired, account_non_locked, credentials_non_expired, enabled, password_changed, created_at, ref, speciality) VALUES
+(1, 'Medecin', 'dr.alami', 'alami@hospital.ma', '$2a$10$hashedpassword1', 'Mohammed', 'Alami', 'Alami', 'Mohammed', '0661234567', '0661234567', 1, '1975-03-15', 1, 1, 1, 1, 1, NOW(), 'MED001', 'Cardiologie'),
+(2, 'Medecin', 'dr.bennani', 'bennani@hospital.ma', '$2a$10$hashedpassword2', 'Fatima', 'Bennani', 'Bennani', 'Fatima', '0662345678', '0662345678', 2, '1980-07-22', 1, 1, 1, 1, 1, NOW(), 'MED002', 'Pédiatrie'),
+(3, 'Medecin', 'dr.tazi', 'tazi@hospital.ma', '$2a$10$hashedpassword3', 'Hassan', 'Tazi', 'Tazi', 'Hassan', '0663456789', '0663456789', 1, '1978-11-08', 1, 1, 1, 1, 1, NOW(), 'MED003', 'Chirurgie générale'),
+(4, 'Infirmier', 'inf.amrani', 'amrani@hospital.ma', '$2a$10$hashedpassword4', 'Amina', 'Amrani', 'Amrani', 'Amina', '0664567890', '0664567890', 2, '1985-05-12', 1, 1, 1, 1, 1, NOW(), 'INF001', NULL),
+(5, 'Medecin', 'dr.lahlou', 'lahlou@hospital.ma', '$2a$10$hashedpassword5', 'Karim', 'Lahlou', 'Lahlou', 'Karim', '0665678901', '0665678901', 1, '1982-09-30', 1, 1, 1, 1, 1, NOW(), 'MED004', 'Neurologie'),
+(6, 'Infirmier', 'inf.khadija', 'khadija@hospital.ma', '$2a$10$hashedpassword6', 'Khadija', 'Mansouri', 'Mansouri', 'Khadija', '0666789012', '0666789012', 2, '1990-02-18', 1, 1, 1, 1, 1, NOW(), 'INF002', NULL),
+(7, 'Medecin', 'dr.idrissi', 'idrissi@hospital.ma', '$2a$10$hashedpassword7', 'Youssef', 'Idrissi', 'Idrissi', 'Youssef', '0667890123', '0667890123', 1, '1977-12-25', 1, 1, 1, 1, 1, NOW(), 'MED005', 'Dermatologie'),
+(8, 'Medecin', 'dr.zahiri', 'zahiri@hospital.ma', '$2a$10$hashedpassword8', 'Samira', 'Zahiri', 'Zahiri', 'Samira', '0668901234', '0668901234', 2, '1983-04-14', 1, 1, 1, 1, 1, NOW(), 'MED006', 'Gynécologie'),
+(9, 'Infirmier', 'inf.omar', 'omar@hospital.ma', '$2a$10$hashedpassword9', 'Omar', 'Fassi', 'Fassi', 'Omar', '0669012345', '0669012345', 1, '1988-08-07', 1, 1, 1, 1, 1, NOW(), 'INF003', NULL),
+(10, 'Medecin', 'dr.benali', 'benali@hospital.ma', '$2a$10$hashedpassword10', 'Rachid', 'Benali', 'Benali', 'Rachid', '0660123456', '0660123456', 1, '1979-06-20', 1, 1, 1, 1, 1, NOW(), 'MED007', 'Radiologie');
+
+-- PATIENT - IMPORTANT: Insérer AVANT consultation
+INSERT INTO patient (id, nom, prenom, date_naissance, sexe, num_dossier, photo_profil, created_at) VALUES
+(1, 'Chakir', 'Ahmed', '1990-05-15', 1, 'DOS001', 'profile1.jpg', NOW()),
+(2, 'El Amri', 'Salma', '1985-08-22', 2, 'DOS002', 'profile2.jpg', NOW()),
+(3, 'Hamdi', 'Khalid', '1978-12-10', 1, 'DOS003', 'profile3.jpg', NOW()),
+(4, 'Ziani', 'Nadia', '1995-03-28', 2, 'DOS004', 'profile4.jpg', NOW()),
+(5, 'Benjelloun', 'Said', '1982-07-14', 1, 'DOS005', 'profile5.jpg', NOW()),
+(6, 'Filali', 'Houda', '1992-11-05', 2, 'DOS006', 'profile6.jpg', NOW()),
+(7, 'Slaoui', 'Mehdi', '1988-01-19', 1, 'DOS007', 'profile7.jpg', NOW()),
+(8, 'Ouazzani', 'Leila', '1975-09-30', 2, 'DOS008', 'profile8.jpg', NOW()),
+(9, 'Naciri', 'Amine', '2000-04-12', 1, 'DOS009', 'profile9.jpg', NOW()),
+(10, 'Berrada', 'Zineb', '1998-06-25', 2, 'DOS010', 'profile10.jpg', NOW());
+
+-- PATIENT_CONTACT
+INSERT INTO patient_contact (id, patient, nom, prenom, telephone, email, cin, adresse, relation) VALUES
+(1, 1, 'Chakir', 'Fatima', '0671234567', 'fatima.chakir@email.ma', 'AB123456', '12 Rue Hassan II, Casablanca', 2),
+(2, 2, 'El Amri', 'Rachid', '0672345678', 'rachid.elamri@email.ma', 'AB234567', '45 Bd Mohammed V, Rabat', 1),
+(3, 3, 'Hamdi', 'Meriem', '0673456789', 'meriem.hamdi@email.ma', 'AB345678', '78 Av des FAR, Marrakech', 3),
+(4, 4, 'Ziani', 'Hassan', '0674567890', 'hassan.ziani@email.ma', 'AB456789', '23 Rue Oujda, Fès', 1),
+(5, 5, 'Benjelloun', 'Aicha', '0675678901', 'aicha.benj@email.ma', 'AB567890', '56 Bd Zerktouni, Casablanca', 3),
+(6, 6, 'Filali', 'Karim', '0676789012', 'karim.filali@email.ma', 'AB678901', '89 Rue Tanger, Tétouan', 4),
+(7, 7, 'Slaoui', 'Samira', '0677890123', 'samira.slaoui@email.ma', 'AB789012', '34 Av Lalla Yacout, Casablanca', 2),
+(8, 8, 'Ouazzani', 'Youssef', '0678901234', 'youssef.ouaz@email.ma', 'AB890123', '67 Rue Agadir, Agadir', 6),
+(9, 9, 'Naciri', 'Khadija', '0679012345', 'khadija.naciri@email.ma', 'AB901234', '12 Bd El Jadida, El Jadida', 2),
+(10, 10, 'Berrada', 'Omar', '0670123456', 'omar.berrada@email.ma', 'AB012345', '90 Rue Meknès, Meknès', 1);
+
+-- ANTECEDENT - IMPORTANT: Insérer AVANT fiche_patient
+INSERT INTO antecedent (id, groupe_sanguin, allergie, alimentation, mouvement, respiratoire, sommeil, etat_psy, ref) VALUES
+(1, 7, 'Pénicilline', 'Équilibrée', 'Actif', 'Normale', 'Bon', 'Stable', 'ANT001'),
+(2, 1, 'Aucune', 'Végétarienne', 'Modéré', 'Asthme léger', 'Insomnie occasionnelle', 'Anxiété légère', 'ANT002'),
+(3, 3, 'Pollen', 'Normale', 'Sédentaire', 'Normale', 'Bon', 'Stable', 'ANT003'),
+(4, 2, 'Fruits de mer', 'Équilibrée', 'Actif', 'Normale', 'Apnée du sommeil', 'Stable', 'ANT004'),
+(5, 5, 'Aucune', 'Riche en protéines', 'Très actif', 'Normale', 'Bon', 'Stable', 'ANT005'),
+(6, 7, 'Lactose', 'Sans lactose', 'Modéré', 'Bronchite chronique', 'Bon', 'Dépression traitée', 'ANT006'),
+(7, 4, 'Aspirine', 'Équilibrée', 'Actif', 'Normale', 'Bon', 'Stable', 'ANT007'),
+(8, 6, 'Aucune', 'Diabétique', 'Modéré', 'Normale', 'Sommeil fragmenté', 'Stress chronique', 'ANT008'),
+(9, 8, 'Arachides', 'Normale', 'Actif', 'Normale', 'Bon', 'Stable', 'ANT009'),
+(10, 1, 'Aucune', 'Équilibrée', 'Sédentaire', 'Rhinite allergique', 'Bon', 'Stable', 'ANT010');
+
+-- CONSULTATION - Maintenant on peut insérer car user (médecin + infirmier) et patient existent
+INSERT INTO consultation (id, patient, medecin, infermier, date_consultation, heure_consultation, type_consultation, ref) VALUES
+(1, 1, 1, 4, '2024-01-15 09:00:00', '2024-01-15 09:00:00', 'Première consultation', 'CONS001'),
+(2, 2, 2, 4, '2024-01-16 10:30:00', '2024-01-16 10:30:00', 'Suivi', 'CONS002'),
+(3, 3, 3, 6, '2024-01-17 14:00:00', '2024-01-17 14:00:00', 'Urgence', 'CONS003'),
+(4, 4, 1, 4, '2024-01-18 11:00:00', '2024-01-18 11:00:00', 'Contrôle', 'CONS004'),
+(5, 5, 5, 6, '2024-01-19 15:30:00', '2024-01-19 15:30:00', 'Première consultation', 'CONS005'),
+(6, 6, 2, 9, '2024-01-20 08:30:00', '2024-01-20 08:30:00', 'Suivi', 'CONS006'),
+(7, 7, 7, 4, '2024-01-21 13:00:00', '2024-01-21 13:00:00', 'Consultation spécialisée', 'CONS007'),
+(8, 8, 8, 6, '2024-01-22 10:00:00', '2024-01-22 10:00:00', 'Suivi grossesse', 'CONS008'),
+(9, 9, 1, 9, '2024-01-23 16:00:00', '2024-01-23 16:00:00', 'Urgence', 'CONS009'),
+(10, 10, 2, 4, '2024-01-24 09:30:00', '2024-01-24 09:30:00', 'Vaccination', 'CONS010');
+
+-- FICHE_PATIENT
+INSERT INTO fiche_patient (id, consultation, antecedent, date_fiche_patient, histoire_maladie, examen_fiche_patient, conclusion_fiche_patient, antecedent_famillial, ref) VALUES
+(1, 1, 1, '2024-01-15', 'Douleurs thoraciques depuis 2 jours', 'TA: 140/90, Pouls: 85, Température: 37°C', 'Suspicion angine de poitrine', 'Père: diabète, Mère: HTA', 'FP001'),
+(2, 2, 2, '2024-01-16', 'Toux persistante depuis 1 semaine', 'Auscultation pulmonaire: normale, TA: 120/80', 'Bronchite aiguë', 'Aucun antécédent notable', 'FP002'),
+(3, 3, 3, '2024-01-17', 'Fracture suite à chute', 'Radio membre inférieur, œdème important', 'Fracture tibia, nécessite plâtre', 'Frère: ostéoporose', 'FP003'),
+(4, 4, 4, '2024-01-18', 'Éruption cutanée', 'Lésions érythémateuses diffuses', 'Allergie médicamenteuse probable', 'Mère: allergies multiples', 'FP004'),
+(5, 5, 5, '2024-01-19', 'Céphalées récurrentes', 'Examen neurologique normal, TA: 130/85', 'Migraines, traitement préventif', 'Père: migraines chroniques', 'FP005'),
+(6, 6, 6, '2024-01-20', 'Contrôle asthme', 'Spirométrie: amélioration, DEP: 85%', 'Asthme bien contrôlé', 'Sœur: asthme', 'FP006'),
+(7, 7, 7, '2024-01-21', 'Eczéma chronique', 'Plaques sèches membres supérieurs', 'Dermatite atopique, traitement local', 'Mère: eczéma', 'FP007'),
+(8, 8, 8, '2024-01-22', 'Grossesse 20 SA, contrôle routine', 'Echo: grossesse normale, TA: 115/75', 'Grossesse évolutive normale', 'Aucun', 'FP008'),
+(9, 9, 9, '2024-01-23', 'Douleur abdominale aiguë', 'Abdomen sensible, défense localisée', 'Appendicite probable, chirurgie', 'Père: lithiase biliaire', 'FP009'),
+(10, 10, 10, '2024-01-24', 'Vaccination rappel', 'Examen clinique: bon état général', 'Vaccination effectuée', 'Aucun', 'FP010');
+
+-- DIAGNOSTIC
+INSERT INTO diagnostic (id, consultation, date_diagnostic, description, ref) VALUES
+(1, 1, '2024-01-15', 'Angine de poitrine stable - Coronaropathie suspectée', 'DIAG001'),
+(2, 2, '2024-01-16', 'Bronchite aiguë d''origine virale', 'DIAG002'),
+(3, 3, '2024-01-17', 'Fracture fermée du tibia droit', 'DIAG003'),
+(4, 4, '2024-01-18', 'Urticaire médicamenteuse', 'DIAG004'),
+(5, 5, '2024-01-19', 'Migraine sans aura', 'DIAG005'),
+(6, 6, '2024-01-20', 'Asthme allergique persistant léger', 'DIAG006'),
+(7, 7, '2024-01-21', 'Dermatite atopique modérée', 'DIAG007'),
+(8, 8, '2024-01-22', 'Grossesse normale à 20 SA', 'DIAG008'),
+(9, 9, '2024-01-23', 'Appendicite aiguë', 'DIAG009'),
+(10, 10, '2024-01-24', 'État vaccinal à jour', 'DIAG010');
+
+-- ORDONNANCE
+INSERT INTO ordonnance (id, consultatuin, date_ordonnance, nom_hospital, adresse_hospitla, signature, ref) VALUES
+(1, 1, '2024-01-15', 'Hôpital Ibn Sina', 'Av Mohammed V, Rabat', 'signature_dr_alami.png', 'ORD001'),
+(2, 2, '2024-01-16', 'Clinique Al Amal', 'Bd Zerktouni, Casablanca', 'signature_dr_bennani.png', 'ORD002'),
+(3, 3, '2024-01-17', 'Centre Médical Atlas', 'Rue Atlas, Marrakech', 'signature_dr_tazi.png', 'ORD003'),
+(4, 4, '2024-01-18', 'Hôpital Ibn Sina', 'Av Mohammed V, Rabat', 'signature_dr_alami.png', 'ORD004'),
+(5, 5, '2024-01-19', 'Polyclinique du Sud', 'Bd Hassan II, Agadir', 'signature_dr_lahlou.png', 'ORD005'),
+(6, 6, '2024-01-20', 'Clinique Al Amal', 'Bd Zerktouni, Casablanca', 'signature_dr_bennani.png', 'ORD006'),
+(7, 7, '2024-01-21', 'Centre de Santé Al Baraka', 'Rue Fès, Fès', 'signature_dr_idrissi.png', 'ORD007'),
+(8, 8, '2024-01-22', 'Clinique Yasmine', 'Av Hassan II, Rabat', 'signature_dr_zahiri.png', 'ORD008'),
+(9, 9, '2024-01-23', 'Hôpital Ibn Sina', 'Av Mohammed V, Rabat', 'signature_dr_alami.png', 'ORD009'),
+(10, 10, '2024-01-24', 'Clinique Al Amal', 'Bd Zerktouni, Casablanca', 'signature_dr_bennani.png', 'ORD010');
+
+-- TRAITEMENT
+INSERT INTO traitement (id, consultatuin, ordonnance, image_ordonnance, ref) VALUES
+(1, 1, 1, 'ordonnance_scan_001.pdf', 'TRAIT001'),
+(2, 2, 2, 'ordonnance_scan_002.pdf', 'TRAIT002'),
+(3, 3, 3, 'ordonnance_scan_003.pdf', 'TRAIT003'),
+(4, 4, 4, 'ordonnance_scan_004.pdf', 'TRAIT004'),
+(5, 5, 5, 'ordonnance_scan_005.pdf', 'TRAIT005'),
+(6, 6, 6, 'ordonnance_scan_006.pdf', 'TRAIT006'),
+(7, 7, 7, 'ordonnance_scan_007.pdf', 'TRAIT007'),
+(8, 8, 8, 'ordonnance_scan_008.pdf', 'TRAIT008'),
+(9, 9, 9, 'ordonnance_scan_009.pdf', 'TRAIT009'),
+(10, 10, 10, 'ordonnance_scan_010.pdf', 'TRAIT010');
+
+-- MEDICAMENT
+INSERT INTO medicament (id, traitement, soint_produit, duree, consigne, ref) VALUES
+(1, 1, 'Aspirine 100mg', '30 jours', '1 comprimé par jour le matin', 'MED001'),
+(2, 1, 'Atorvastatine 20mg', '30 jours', '1 comprimé le soir', 'MED002'),
+(3, 2, 'Amoxicilline 500mg', '7 jours', '1 comprimé 3 fois par jour', 'MED003'),
+(4, 3, 'Ibuprofène 400mg', '10 jours', '1 comprimé 3 fois par jour si douleur', 'MED004'),
+(5, 4, 'Cetirizine 10mg', '14 jours', '1 comprimé le soir', 'MED005'),
+(6, 5, 'Sumatriptan 50mg', '30 jours', '1 comprimé en cas de crise', 'MED006'),
+(7, 6, 'Salbutamol inhalateur', '30 jours', '2 bouffées si besoin', 'MED007'),
+(8, 7, 'Dermocorticoïde crème', '21 jours', 'Application 2 fois par jour', 'MED008'),
+(9, 8, 'Acide folique 5mg', '90 jours', '1 comprimé par jour', 'MED009'),
+(10, 9, 'Métronidazole 500mg', '5 jours', '1 comprimé 3 fois par jour', 'MED010');
+
+-- ANALYSE_MEDICALE
+INSERT INTO analyse_medicale (id, consultation, epreuve, date_analyse_medicale, valeur, valeur_rang, ref) VALUES
+(1, 1, 1, '2024-01-15', 1.15, '0.70-1.10 g/L', 'ANA001'),
+(2, 1, 3, '2024-01-15', 2.40, '1.50-2.00 g/L', 'ANA002'),
+(3, 2, 2, '2024-01-16', 13.5, '12-16 g/dL', 'ANA003'),
+(4, 3, 4, '2024-01-17', 85, '60-110 mg/dL', 'ANA004'),
+(5, 4, 6, '2024-01-18', 9500, '4000-11000 /mm³', 'ANA005'),
+(9, 8, 2, '2024-01-22', 12.8, '12-16 g/dL', 'ANA009'),
+(10, 9, 6, '2024-01-23', 15200, '4000-11000 /mm³', 'ANA010');
+
+-- RADIOLOGIE
+INSERT INTO radiologie (id, consultatuin, type_image, date_radiologie, image_scann, commentaire, ref) VALUES
+(1, 1, 1, '2024-01-15', 'radio_thorax_001.jpg', 'Silhouette cardiaque augmentée', 'RAD001'),
+(2, 2, 1, '2024-01-16', 'radio_thorax_002.jpg', 'Poumons clairs, pas d''infiltrat', 'RAD002'),
+(3, 3, 5, '2024-01-17', 'radio_tibia_001.jpg', 'Fracture tibia 1/3 moyen', 'RAD003'),
+(4, 5, 2, '2024-01-19', 'irm_cerebrale_001.jpg', 'Pas d''anomalie décelée', 'RAD004'),
+(5, 7, 4, '2024-01-21', 'echo_abdo_001.jpg', 'Foie et reins normaux', 'RAD005'),
+(6, 8, 4, '2024-01-22', 'echo_obstetrique_001.jpg', 'Fœtus unique évolutif, biométrie normale', 'RAD006'),
+(7, 9, 3, '2024-01-23', 'scanner_abdo_001.jpg', 'Appendice inflammatoire', 'RAD007'),
+(8, 1, 8, '2024-01-15', 'scanner_thorax_001.jpg', 'Coronaires calcifiées', 'RAD008'),
+(9, 6, 10, '2024-01-20', 'doppler_001.jpg', 'Flux sanguin normal', 'RAD009'),
+(10, 3, 5, '2024-01-17', 'radio_genou_001.jpg', 'Pas d''autre lésion osseuse', 'RAD010');
+-- SYNTHESE_MEDICALE
+INSERT INTO synthese_medicale (id, consultation, date_synthese_medicale, description, ref) VALUES
+(1, 1, '2024-01-15', 'Patient avec facteurs de risque cardiovasculaire. Instauration traitement anticoagulant et hypolipémiant. Consultation cardiologie à programmer.', 'SYN001'),
+(2, 2, '2024-01-16', 'Bronchite aiguë virale. Traitement symptomatique. Repos recommandé. Revoir si aggravation.', 'SYN002'),
+(3, 3, '2024-01-17', 'Fracture tibia nécessitant immobilisation plâtrée 6 semaines. Contrôle radiologique à J15.', 'SYN003'),
+(4, 4, '2024-01-18', 'Réaction allergique médicamenteuse. Éviction allergie identifiée. Traitement antihistaminique.', 'SYN004'),
+(5, 5, '2024-01-19', 'Céphalées migraineuses. Traitement de crise et préventif instauré. Tenir agenda des crises.', 'SYN005'),
+(6, 6, '2024-01-20', 'Asthme bien équilibré sous traitement actuel. Poursuite même traitement. Contrôle dans 3 mois.', 'SYN006'),
+(7, 7, '2024-01-21', 'Poussée d''eczéma. Traitement local corticoïde. Éviter facteurs déclenchants. Revoir dans 3 semaines.', 'SYN007'),
+(8, 8, '2024-01-22', 'Grossesse évolutive normale à 20 SA. Examens biologiques normaux. Prochaine consultation à 24 SA.', 'SYN008'),
+(9, 9, '2024-01-23', 'Appendicite aiguë confirmée. Intervention chirurgicale programmée en urgence. Antibioprophylaxie.', 'SYN009'),
+(10, 10, '2024-01-24', 'Vaccination de rappel effectuée. Aucune contre-indication. Surveillance 15 minutes post-injection normale.', 'SYN010');
+
+-- CERTIFICAT
+INSERT INTO certificat (id, consultatuin, date_debut, date_fin, nbr_jour, description, ref) VALUES
+(1, 1, '2024-01-15', '2024-01-22', 7, 'Repos médical pour douleurs thoraciques', 'CERT001'),
+(2, 2, '2024-01-16', '2024-01-19', 3, 'Arrêt de travail pour bronchite aiguë', 'CERT002'),
+(3, 3, '2024-01-17', '2024-03-17', 60, 'Immobilisation membre inférieur - fracture tibia', 'CERT003'),
+(4, 4, '2024-01-18', '2024-01-20', 2, 'Repos pour réaction allergique', 'CERT004'),
+(5, 5, '2024-01-19', '2024-01-21', 2, 'Arrêt pour céphalées intenses', 'CERT005'),
+(6, 7, '2024-01-21', '2024-01-25', 4, 'Repos pour dermatite sévère', 'CERT006'),
+(7, 9, '2024-01-23', '2024-02-06', 14, 'Arrêt post-opératoire appendicectomie', 'CERT007'),
+(8, 1, '2024-01-15', '2024-01-15', 0, 'Certificat aptitude sport avec réserves', 'CERT008'),
+(9, 6, '2024-01-20', '2024-01-20', 0, 'Certificat de bonne santé', 'CERT009'),
+(10, 10, '2024-01-24', '2024-01-24', 0, 'Certificat de vaccination', 'CERT010');

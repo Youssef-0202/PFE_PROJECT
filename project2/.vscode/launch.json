@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Gestion_service_pediatrieApplication<gestion_service_pediatrie>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "ma.zs.gestion_service_pediatrie.Gestion_service_pediatrieApplication",
+            "projectName": "gestion_service_pediatrie",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
